@@ -1,0 +1,15 @@
+<section>
+     <h2 data-bind="html:displayName"></h2>
+   
+    Records : <div data-bind="text: people().length" class="label"></div>
+    <ul data-bind="foreach:people">
+        <li>
+            <span data-bind="text: name"></span>
+            <!--Muestra del Binding de doble via-->
+            <!--<input data-bind="value: name"></input>-->
+        </li>
+    </ul>
+                    
+    <div id="grid">
+    </div>
+</section>

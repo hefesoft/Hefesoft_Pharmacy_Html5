@@ -1,0 +1,25 @@
+
+<h2 data-bind="html:displayName"></h2>    
+
+<section id="Contenedor">
+
+    <div id="Panel">
+        <div 
+             id="Grid_Panel"
+             data-role="grid" 
+             data-bind="source: datasource" 
+             data-editable = "inline"
+             data-toolbar='["create"]'
+             data-columns='[
+                            {"field": "Id_Medico", "title": "Medico", "editor": "medicoDropDownEditor" ,"template": "#= parent().parent().convertir_A_Medico(Id_Medico) #"},
+                            {"field": "Id_Farmacia", "title": "Farmacia", "editor": "farmaciaDropDownEditor" ,"template": "#= parent().parent().convertir_A_Farmacia(Id_Farmacia) #"},
+                            {"field": "Contactos", "title": "# Contactos"}, 
+                            {"field": "Id_Usuario", "title": "Asignar a" , "editor": "usuariosDropDownEditor" ,"template": "#= parent().parent().convertir_A_Usuarios(Id_Usuario) #"},
+                            {"field": "Id_Ciclo", "title": "Ciclo", "editor": "cicloDropDownEditor" ,"template": "#= parent().parent().convertir_A_Ciclo(Id_Ciclo) #"},
+                            {"command": ["edit","destroy"]}
+                           ]'             
+             >
+        </div>
+    </div>
+
+</section>

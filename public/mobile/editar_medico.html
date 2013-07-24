@@ -1,0 +1,100 @@
+<div id="editar-medico-view" data-role="view" data-model="app.editar_medico_view.viewModel" data-init="app.editar_medico_view.viewModel.loaded" data-title="Editar medico" data-use-native-scrolling="true">
+    
+     <header data-role="header">
+        <div data-role="navbar">            
+            <a data-role="button" data-rel="drawer" href="#left-drawer" data-icon="comments" data-align="left"></a>
+            <span data-role="view-title">Editar medico</span>
+        </div>
+    </header>
+
+    <ul data-role="listview" data-style="inset">
+        <li data-bind="style: {display: Layout.Read}">Nombres <span data-bind="text: Medico_Entidad.Nombres" ></span></li>  
+        <li  data-bind="style: {display: Layout.Edit}" >
+                <label>Nombres
+                    <input type="text" data-bind="value: Medico_Entidad.Nombres" placeholder="Nombres" />
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Apellidos <span data-bind="text: Medico_Entidad.Apellidos" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Apellidos
+                    <input type="text"  data-bind="value: Medico_Entidad.Apellidos" placeholder="Apellidos" />
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Especialidad <span data-bind="text: ReadOnlyProperties.Especialidad" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+              <label>Especialidades
+                    <select id="dropdown">                        
+                    </select>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Departamento <span data-bind="text: ReadOnlyProperties.Departamento" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Departamento
+                    <select id="Departamento">                        
+                    </select>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Ciudad <span data-bind="text: ReadOnlyProperties.Ciudad" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Ciudad
+                    <select id="Ciudad">                        
+                    </select>
+                </label>
+           </li>
+
+        <li data-bind="style: {display: Layout.Read}">Celular <span data-bind="text: Medico_Entidad.Celular" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Celular
+                    <input type="number" data-bind="value: Medico_Entidad.Celular" placeholder="Celular"/>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Celular trabajo <span data-bind="text: Medico_Entidad.Celular2" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Celular trabajo
+                    <input type="number" data-bind="value: Medico_Entidad.Celular2" placeholder="Celular Trabajo"/>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Correo Corporativo <span data-bind="text: Medico_Entidad.CorreoCorporativo" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Correo Corporativo
+                    <input type="email" data-bind="value: Medico_Entidad.CorreoCorporativo" placeholder="Correo corporativo"/>
+                </label>
+            </li>
+        
+        <li data-bind="style: {display: Layout.Read}">Correo Personal <span data-bind="text: Medico_Entidad.CorreoPersonal" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Correo Personal
+                    <input type="email" data-bind="value: Medico_Entidad.CorreoPersonal" placeholder="Correo personal"/>
+                </label>
+            </li>
+        
+        <li data-bind="style: {display: Layout.Read}">Numero de Documento <span data-bind="text: Medico_Entidad.Numero_Documento" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Numero de Documento
+                    <input type="text" data-bind="value: Medico_Entidad.Numero_Documento" placeholder="Numero de documento"/>
+                </label>
+            </li>       
+            
+        <li data-bind="style: {display: Layout.Read}">Fecha de nacimiento <span data-bind="text: Medico_Entidad.FechaNacimiento" ></span></li>  
+        <li id="fecha_nacimiento_editor" data-bind="style: {display: Layout.Edit}">
+                <label>
+                    Fecha de nacimiento
+                    <input type="date" data-bind="value: Medico_Entidad.FechaNacimiento" placeholder="Fecha de nacimiento"/>
+                </label>
+            </li>       
+    </ul>
+        
+    <div style="display: inline-block">
+        <a id="Modificar"  data-role="button">Modificar</a>
+        <a id="Actualizar"  style="display: none" data-role="button">Actualizar Medico</a>
+    </div>
+
+</div>
+
+

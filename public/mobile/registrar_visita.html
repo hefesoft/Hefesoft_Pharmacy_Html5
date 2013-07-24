@@ -1,0 +1,29 @@
+     <div id="registrar-view" data-role="view" data-model="app.registrar_view.viewModel" data-init="app.registrar_view.viewModel.mobileListViewDataBindInitFlat" data-title="ListView" data-layout="databinding">                    
+
+          <header data-role="header">
+             <div data-role="navbar">
+            <a data-role="button" data-rel="drawer" href="#left-drawer" data-icon="comments" data-align="left"></a>
+            <span data-role="view-title">Login</span>
+        </div>
+         </header>
+
+
+          <input id="buscar" type="search" style="width:94%; height: 45px; margin: 8px 3% 8px 3%; padding-left:10px; padding-right:10px;" placeholder="Digite el nombre de el medico o farmacia" autocapitalize="off" autocorrect="off" />
+          <ul id="flat-listview" data-role="listview" data-style="inset"></ul>
+           <ul data-role="actionsheet" id="inboxActions" data-open="onOpen" data-popup='{"direction": "left"}'>
+              <li class="km-actionsheet-title">Opciones:</li>
+              <li><a href="#" data-action="informacion">Informacion</a></li>
+              <li><a href="#" data-action="replyAll">----</a></li>
+              <li><a href="#" data-action="archive">-----</a></li>
+           </ul>
+      </div>
+  <div id="medicos-view" data-role="view" data-model="app.medicos_view.viewModel" data-init="app.medicos_view.viewModel.mobileListViewDataBindInitFlat" data-title="ListView" data-layout="databinding">                         
+       <div data-role="footer">
+          <div data-role="tabstrip">
+              <a data-icon="contacts">Datos Basicos
+              </a><a data-icon="history">Especialidades
+              </a><a data-icon="favorites">Hobbies
+              </a><a data-icon="settings">Telefonos</a>
+          </div>
+      </div>
+  </div>

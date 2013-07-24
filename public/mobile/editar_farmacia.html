@@ -1,0 +1,158 @@
+<div id="editar-medico-view" data-role="view" data-model="app.editar_farmacia_view.viewModel" data-init="app.editar_farmacia_view.viewModel.loaded" data-title="Editar farmacia" data-use-native-scrolling="true">
+    
+     <header data-role="header">
+        <div data-role="navbar">            
+            <a data-role="button" data-rel="drawer" href="#left-drawer" data-icon="comments" data-align="left"></a>
+            <span data-role="view-title">Editar farmacia</span>
+        </div>
+    </header>
+
+    <ul data-role="listview" data-style="inset">
+        <li data-bind="style: {display: Layout.Read}">Nombre <span data-bind="text: Farmacia_Entidad.Nombre" ></span></li>  
+        <li  data-bind="style: {display: Layout.Edit}" >
+                <label>Nombres
+                    <input type="text" data-bind="value: Farmacia_Entidad.Nombre" placeholder="Nombre" />
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Telefono <span data-bind="text: Farmacia_Entidad.Telefono" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Telefono
+                    <input type="text"  data-bind="value: Farmacia_Entidad.Telefono" placeholder="Telefono" />
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Telefono 2 <span data-bind="text: Farmacia_Entidad.Telefono2" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Telefono 2
+                    <input type="text"  data-bind="value: Farmacia_Entidad.Telefono2" placeholder="Telefono 2" />
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Direccion <span data-bind="text: Farmacia_Entidad.Direccion" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Direccion
+                    <input type="text"  data-bind="value: Farmacia_Entidad.Direccion" placeholder="Direccion" />
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Canal <span data-bind="text: ReadOnlyProperties.Canal_Descripcion" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+              <label>Canal
+                    <select id="dropdown">                        
+                    </select>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Especialidad <span data-bind="text: ReadOnlyProperties.Brick_Descripcion" ></span></li>  
+        
+
+        <li data-bind="style: {display: Layout.Read}">Departamento <span data-bind="text: ReadOnlyProperties.Departamento" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Departamento
+                    <select id="Departamento">                        
+                    </select>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Ciudad <span data-bind="text: ReadOnlyProperties.Ciudad" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Ciudad
+                    <select id="Ciudad">                        
+                    </select>
+                </label>
+           </li>
+
+        <li data-bind="style: {display: Layout.Read}">Numero Registro <span data-bind="text: Farmacia_Entidad.NumeroRegistro" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Numero Registro
+                    <input type="number" data-bind="value: Farmacia_Entidad.NumeroRegistro" placeholder="Celular"/>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Barrio<span data-bind="text: Farmacia_Entidad.Barrio" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Barrio
+                    <input type="text" data-bind="value: Farmacia_Entidad.Barrio" placeholder="Barrio"/>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">No Dependientes<span data-bind="text: Farmacia_Entidad.NoDependientes" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>No Dependientes
+                    <input type="number" data-bind="value: Farmacia_Entidad.NoDependientes" placeholder="Numero de dependientes"/>
+                </label>
+            </li>
+        
+        <li data-bind="style: {display: Layout.Read}">No Distribuidores<span data-bind="text: Farmacia_Entidad.NoDistribuidores" ></span></li>
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>No Distribuidores
+                    <input type="text" data-bind="value: Farmacia_Entidad.NoDistribuidores" placeholder="Numero de distribuidores"/>
+                </label>
+            </li>
+        
+        <li data-bind="style: {display: Layout.Read}">Despacho a Domicilio<span data-bind="text: Farmacia_Entidad.DespachoDomicilio" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>Despacho a Domicilio
+                    <input type="text" data-bind="value: Farmacia_Entidad.DespachoDomicilio" placeholder="Despacho a domicilio"/>
+                </label>
+            </li>       
+            
+        <li data-bind="style: {display: Layout.Read}">Apellidos Administrador<span data-bind="text: Farmacia_Entidad.ApellidosAdministrador" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>
+                    Apellidos Administrador
+                    <input type="text" data-bind="value: Farmacia_Entidad.ApellidosAdministrador" placeholder="Apellidos administrador"/>
+                </label>
+            </li>       
+
+        <li data-bind="style: {display: Layout.Read}">Nombres Administrador<span data-bind="text: Farmacia_Entidad.NombresAdministrador" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>
+                    Nombres Administrador
+                    <input type="text" data-bind="value: Farmacia_Entidad.NombresAdministrador" placeholder="Nombres administrador"/>
+                </label>
+            </li>       
+
+        <li data-bind="style: {display: Layout.Read}">Documento Administrador<span data-bind="text: Farmacia_Entidad.DocumentoAdministrador" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>
+                    Documento Administrador
+                    <input type="text" data-bind="value: Farmacia_Entidad.DocumentoAdministrador" placeholder="Documento Administrador"/>
+                </label>
+            </li>       
+
+        <li data-bind="style: {display: Layout.Read}">Celular Administrador<span data-bind="text: Farmacia_Entidad.CelularAdministrador" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>
+                    Celular Administrador
+                    <input type="text" data-bind="value: Farmacia_Entidad.CelularAdministrador" placeholder="Celular Administrador"/>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Email Administrador<span data-bind="text: Farmacia_Entidad.EmailAdministrador" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>
+                    Email Administrador
+                    <input type="text" data-bind="value: Farmacia_Entidad.EmailAdministrador" placeholder="Email Administrador"/>
+                </label>
+            </li>
+
+        <li data-bind="style: {display: Layout.Read}">Fecha de nacimiento <span data-bind="text: Farmacia_Entidad.FechaNacimientoAdministrador" ></span></li>  
+        <li data-bind="style: {display: Layout.Edit}">
+                <label>
+                    Fecha de nacimiento
+                    <input type="date" data-bind="value: Farmacia_Entidad.FechaNacimientoAdministrador" placeholder="Fecha de nacimiento"/>
+                </label>
+            </li>     
+
+    </ul>
+        
+    <div style="display: inline-block">
+        <a id="Modificar"  data-role="button">Modificar</a>
+        <a id="Actualizar"  style="display: none" data-role="button">Actualizar Medico</a>
+    </div>
+
+</div>
+
+

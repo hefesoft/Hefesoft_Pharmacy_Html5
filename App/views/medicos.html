@@ -1,0 +1,24 @@
+
+<section>
+    <h2 data-bind="html:displayName"></h2> 
+
+    <div id="Medicos">
+        <div 
+             id="Grid_Medico"
+             data-role="grid" 
+             data-bind="source: datasource" 
+             data-editable = "inline"
+             data-toolbar='["create"]'
+             data-columns='[
+                            {"field": "Nombres", "title": "Nombres"}, 
+                            {"field": "Apellidos", "title": "Apellidos"},
+                            {"field": "NumeroDocumento", "title": "Numero de documento"},                           
+                            { "field": "IdTipoDocumento", "title": "Tipo de documento", "editor": "medicoDropDownEditor", "template": "#= parent().parent().getRoleName(IdTipoDocumento) #"},
+                            {"command": ["edit","destroy"]}
+                           ]'             
+             >
+        </div>
+    </div>
+
+    </div>   
+</section>

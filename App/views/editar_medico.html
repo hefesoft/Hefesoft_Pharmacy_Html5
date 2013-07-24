@@ -1,0 +1,32 @@
+
+<h2 data-bind="html:displayName"></h2>
+
+<section id="editarMedico">
+    
+     <div><label for="apellidos" class="required">Apellidos</label><input type="text" id="apellidos" data-bind="value: Apellidos" class="k-textbox" placeholder="Apellidos" required /></div>
+     <div><label for="nombres" class="required">Nombres</label><input type="text" id="nombres" data-bind="value: Nombres" class="k-textbox" placeholder="Nombres" required /></div>
+     
+     <div><label for="fecha_nacimiento" class="required">Fecha de nacimiento</label><input type="datetime" id="fecha_nacimiento" data-bind="value: FechaNacimiento" required /></div>
+     <div><label for="numero_documento" class="required">Numero de documento</label><input type="text" id="numero_documento" data-bind="value: Numero_Documento" class="k-textbox" placeholder="Numero de documento" /></div>  
+     <div><label for="Celular2" class="required">Celular</label><input type="text" id="Celular" data-bind="value: Celular" class="k-textbox" placeholder="Celular" /></div>  
+     <div><label for="Celular2" class="required">Otro celular</label><input type="text" id="Celular2" data-bind="value: Celular2" class="k-textbox" placeholder="Otro celular" /></div>  
+    
+     <div><label for="CorreoCorporativo" class="required">Correo corporativo</label><input type="email" id="CorreoCorporativo" data-bind="value: CorreoCorporativo" class="k-textbox" placeholder="Correo corporativo" /></div>  
+     <div><label for="CorreoPersonal" class="required">Correo personal</label><input type="email" id="CorreoPersonal" data-bind="value: CorreoPersonal" class="k-textbox" placeholder="Correo personal" /></div>  
+     <div><label for="Recepcionista" class="required">Recepcionista</label><input type="text" id="Recepcionista" data-bind="value: Recepcionista" class="k-textbox" placeholder="Recepcionista" /></div>  
+     <div><label for="Cargo" class="required">Cargo</label><input type="text" id="Cargo" data-bind="value: Cargo" class="k-textbox" placeholder="Cargo" /></div>  
+     <div><label for="Barrio" class="required">Barrio</label><input type="text" id="Barrio" data-bind="value: Barrio" class="k-textbox" placeholder="Barrio" /></div>  
+     <div><label for="Direccion" class="required">Direccion</label><input type="text" id="Direccion" data-bind="value: Direccion" class="k-textbox" placeholder="Direccion" /></div>  
+     
+     <div><label for="categories">Especialidad:</label><input id="Especialidad" /></div>
+     <div><label for="Departamento">Departamento:</label><input id="Departamento" /></div>
+     <div id="contenedorCiudad" style="visibility: collapse" ><label for="Ciudad">Ciudad:</label><input id="Ciudad" /></div>
+
+      <div  class="accept">
+            <button id="guardar_cambios" class="k-button" type="submit">Guardar cambios</button>
+      </div>
+
+    
+
+
+</section>

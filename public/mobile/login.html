@@ -1,0 +1,36 @@
+  <div id="login-view" data-role="view" data-model="app.login_view.viewModel" data-init="app.login_view.viewModel.loaded">
+    
+     <header data-role="header">
+        <div data-role="navbar">            
+            <span data-role="view-title">Login</span>
+        </div>
+    </header>
+
+    <div>
+        <ul data-role="listview">
+           <li>
+               <label>
+                   Usuario
+                   <input type="text" placeholder="Nombre de usuario" data-bind="value: Usuario_Entidad.usuario" required validationmessage="Required" />
+                </label>
+            </li>
+            <li>
+                <label>
+                   Contraseña
+                   <input type="password" placeholder="Contraseña" data-bind="value: Usuario_Entidad.password" required validationmessage="Required" />
+                </label>
+            </li>
+            <li>
+                
+            </li>
+         </ul> 
+         <a id="Ingresar" data-role="button"  data-click="app.login_view.viewModel.login">Ingresar</a>     
+        </div>
+   </div>
+
+
+
+
+
+
+

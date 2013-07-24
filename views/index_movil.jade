@@ -1,0 +1,21 @@
+extends layout
+
+block headinclude   
+    |        <link rel="stylesheet" href="kendo/2013.1.319/kendo.common.min.css" />       
+    |        <link rel="stylesheet" href="kendo/2013.1.319/kendo.default.min.css" />
+    |        <link rel="stylesheet" href="kendo/2013.1.319/kendo.mobile.all.min.css" /> 
+    |        <link rel="stylesheet" href="stylesheets/Mobile.css" /> 
+    |        <link rel="stylesheet" href="toastr.min.css" />     
+    |        <script src="knockout-2.2.1.js"></script> 
+    |        <script src="moment.min.js"></script> 
+    |        <script src="durandal/amd/require.js" data-main="main_mobile.js"></script>        
+    
+
+block content     
+     | <div id="splash-view" data-role="view" data-model="app.splash_view.viewModel" data-init="app.splash_view.viewModel.loaded">         
+     | </div>
+
+
+
+
+     

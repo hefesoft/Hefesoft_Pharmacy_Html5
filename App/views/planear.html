@@ -1,0 +1,56 @@
+
+<h2 data-bind="html:displayName"></h2>   
+
+<section id="Contenedor">
+    <div id="Panel" class="box">
+        <div class="Grillas"            
+             id="Grid_Panel"
+             data-role="grid" 
+             data-bind ="source: datasourcePanel, events: { change: change }" 
+             data-selectable="row"                     
+             data-bind="source: datasourcePanel"
+             data-columns='[
+                            {"field": "Nombre_Mostrar", "title": "Nombre"},
+                            {"field": "Direccion_Mostrar", "title": "Direccion"},
+                            {"field": "Contactos", "title": "Contactos"},
+                           ]'             
+             >
+        </div>
+    </div>
+    
+    <div id="Planear" class="box">
+        <div class="Grillas"            
+             data-role="grid" 
+             data-bind="source: datasourcePlaneacion" 
+             data-editable = "inline"            
+             data-columns='[
+                            {"field": "Nombre_Mostrar", "title": "Nombres"}, 
+                            {"field": "Direccion_Mostrar", "title": "Direccion"},
+                            {"field": "Fecha", "title": "Fecha", "format": "{0:dd/MM/yyyy}"},
+                            {"field": "Hora", "title": "Hora"},
+                            {"command": ["edit","destroy"]}
+                           ]'             
+             >
+        </div>
+    </div>
+
+   
+</section>
+
+<style>
+    .box {      
+    width: 47%;
+    height: 90%;
+    display: inline-block;   
+    vertical-align: middle;
+    position: relative;    
+}
+    
+ .Grillas {      
+    width: fill-available;
+    height: 300px;
+    display: inline-block;   
+    vertical-align: middle;
+    position: relative;    
+}
+</style>

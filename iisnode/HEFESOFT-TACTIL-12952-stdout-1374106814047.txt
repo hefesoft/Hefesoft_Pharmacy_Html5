@@ -1,0 +1,75 @@
+Express server listening on port \\.\pipe\f415fe05-3e52-4e3e-b545-094e183691d0
+[90mGET / [32m200 [90m64ms - 2.45kb[0m
+[90mGET /font-awesome.css [36m304 [90m11ms[0m
+[90mGET /bootstrap.css [36m304 [90m9ms[0m
+[90mGET /ie10mobile.css [36m304 [90m12ms[0m
+[90mGET /app.css [36m304 [90m12ms[0m
+[90mGET /durandal.css [36m304 [90m13ms[0m
+[90mGET /bootstrap-responsive.css [36m304 [90m13ms[0m
+[90mGET /toastr.min.css [36m304 [90m21ms[0m
+[90mGET /kendo/2013.1.319/kendo.metro.min.css [36m304 [90m16ms[0m
+[90mGET /kendo/2013.1.319/kendo.common.min.css [36m304 [90m9ms[0m
+[90mGET /knockout-2.2.1.js [36m304 [90m7ms[0m
+[90mGET /sammy-0.7.4.js [36m304 [90m8ms[0m
+[90mGET /bootstrap.js [36m304 [90m7ms[0m
+[90mGET /durandal/amd/require.js [36m304 [90m2ms[0m
+[90mGET /font/fontawesome-webfont.woff?v=3.0.1 [36m304 [90m2ms[0m
+[90mGET /main.js [32m200 [90m7ms - 1.22kb[0m
+[90mGET /viewmodels/app.js [32m200 [90m3ms - 2.71kb[0m
+[90mGET /jquery-1.9.1.min.js [36m304 [90m7ms[0m
+[90mGET /MobileServices.Web-1.0.0.min.js [36m304 [90m7ms[0m
+[90mGET /durandal/viewLocator.js [36m304 [90m6ms[0m
+[90mGET /Promesas/q.min.js [36m304 [90m8ms[0m
+[90mGET /durandal/system.js [36m304 [90m9ms[0m
+[90mGET /durandal/app.js [36m304 [90m7ms[0m
+[90mGET /durandal/plugins/router.js [36m304 [90m15ms[0m
+[90mGET /toastr.min.js [36m304 [90m2ms[0m
+[90mGET /kendo/2013.1.319/kendo.all.min.js [36m304 [90m2ms[0m
+[90mGET /durandal/viewEngine.js [36m304 [90m4ms[0m
+[90mGET /durandal/viewModel.js [36m304 [90m3ms[0m
+[90mGET /durandal/composition.js [36m304 [90m4ms[0m
+[90mGET /durandal/modalDialog.js [36m304 [90m6ms[0m
+[90mGET /durandal/widget.js [36m304 [90m12ms[0m
+[90mGET /durandal/events.js [36m304 [90m12ms[0m
+[90mGET /durandal/viewModelBinder.js [36m304 [90m2ms[0m
+[90mGET /viewmodels/shell.js [36m304 [90m1ms[0m
+[90mGET /durandal/amd/text.js [36m304 [90m1ms[0m
+[90mGET /views/shell.html [36m304 [90m1ms[0m
+[90mGET /toastr.min.js.map [33m404 [90m2ms[0m
+[90mGET /jquery.min.map [33m404 [90m1ms[0m
+[90mGET / [32m200 [90m23ms - 2.45kb[0m
+[90mGET /font-awesome.css [32m200 [90m13ms - 21.61kb[0m
+[90mGET /app.css [32m200 [90m14ms - 868[0m
+[90mGET /durandal.css [32m200 [90m15ms - 1.2kb[0m
+[90mGET /bootstrap-responsive.css [32m200 [90m15ms - 22.31kb[0m
+[90mGET /ie10mobile.css [32m200 [90m12ms - 221[0m
+[90mGET /bootstrap.css [32m200 [90m18ms - 127.21kb[0m
+[90mGET /kendo/2013.1.319/kendo.common.min.css [32m200 [90m18ms - 79.46kb[0m
+[90mGET /toastr.min.css [32m200 [90m17ms - 4.86kb[0m
+[90mGET /kendo/2013.1.319/kendo.metro.min.css [32m200 [90m10ms - 13.93kb[0m
+[90mGET /knockout-2.2.1.js [32m200 [90m12ms - 40.06kb[0m
+[90mGET /bootstrap.js [32m200 [90m37ms - 59.25kb[0m
+[90mGET /sammy-0.7.4.js [32m200 [90m5ms - 78.16kb[0m
+[90mGET /durandal/amd/require.js [32m200 [90m80ms - 14.23kb[0m
+[90mGET /main.js [32m200 [90m2ms - 1.39kb[0m
+[90mGET /font/fontawesome-webfont.woff?v=3.0.1 [32m200 [90m7ms - 28.69kb[0m
+[90mGET /viewmodels/app.js [32m200 [90m5ms - 2.71kb[0m
+[90mGET /MobileServices.Web-1.0.0.min.js [32m200 [90m9ms - 113.98kb[0m
+[90mGET /jquery-1.9.1.min.js [32m200 [90m8ms - 90.46kb[0m
+[90mGET /durandal/app.js [32m200 [90m22ms - 2.02kb[0m
+[90mGET /durandal/system.js [32m200 [90m21ms - 5.51kb[0m
+[90mGET /durandal/plugins/router.js [32m200 [90m19ms - 12.49kb[0m
+[90mGET /durandal/viewLocator.js [32m200 [90m25ms - 3.49kb[0m
+[90mGET /Promesas/q.min.js [32m200 [90m5ms - 11.96kb[0m
+[90mGET /durandal/viewEngine.js [32m200 [90m5ms - 2.28kb[0m
+[90mGET /durandal/composition.js [32m200 [90m6ms - 10.64kb[0m
+[90mGET /durandal/widget.js [32m200 [90m4ms - 4.5kb[0m
+[90mGET /durandal/viewModel.js [32m200 [90m16ms - 14.92kb[0m
+[90mGET /durandal/events.js [32m200 [90m9ms - 4.18kb[0m
+[90mGET /durandal/viewModelBinder.js [32m200 [90m33ms - 2.36kb[0m
+[90mGET /durandal/modalDialog.js [32m200 [90m22ms - 6.31kb[0m
+[90mGET /jquery.min.map [33m404 [90m2ms[0m
+[90mGET /bootstrap.js [36m304 [90m3ms[0m
+[90mGET /toastr.min.js [32m200 [90m10ms - 2.82kb[0m
+[90mGET /kendo/2013.1.319/kendo.all.min.js [32m200 [90m16ms - 804.28kb[0m
+[90mGET /toastr.min.js.map [33m404 [90m2ms[0m

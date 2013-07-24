@@ -1,0 +1,7 @@
+Express server listening on port \\.\pipe\5b1c5773-3798-4d12-a5ca-64ad84b7b571
+[90mGET /mobile [32m200 [90m56ms - 597[0m
+[90mGET /toastr.min.css [32m200 [90m28ms - 4.86kb[0m
+[90mGET /kendo/2013.1.319/kendo.default.min.css [32m200 [90m28ms - 15.58kb[0m
+[90mGET /kendo/2013.1.319/kendo.common.min.css [32m200 [90m36ms - 79.46kb[0m
+[90mGET /kendo/2013.1.319/kendo.mobile.all.min.css [32m200 [90m45ms - 202.88kb[0m
+[90mGET /kendo/2013.1.319/images/KendoUI.woff [32m200 [90m2ms - 49.71kb[0m

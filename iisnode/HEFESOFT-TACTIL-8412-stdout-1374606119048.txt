@@ -1,0 +1,15 @@
+Express server listening on port \\.\pipe\42163a4a-ce0b-4139-8a9f-133a72617768
+[90mGET / [32m200 [90m76ms - 2.26kb[0m
+[90mGET /bootstrap.css [36m304 [90m5ms[0m
+[90mGET /bootstrap-responsive.css [36m304 [90m1ms[0m
+[90mGET /font-awesome.css [36m304 [90m2ms[0m
+[90mGET /ie10mobile.css [36m304 [90m1ms[0m
+[90mGET /durandal.css [36m304 [90m1ms[0m
+[90mGET /app.css [36m304 [90m1ms[0m
+[90mGET /toastr.min.css [36m304 [90m1ms[0m
+[90mGET /kendo/2013.1.319/kendo.common.min.css [36m304 [90m3ms[0m
+[90mGET /kendo/2013.1.319/kendo.metro.min.css [36m304 [90m1ms[0m
+[90mGET /knockout-2.2.1.js [36m304 [90m1ms[0m
+[90mGET /durandal/amd/require.js [36m304 [90m1ms[0m
+[90mGET /font/fontawesome-webfont.eot? [32m200 [90m60ms - 24.8kb[0m
+[90mGET / [36m304 [90m10ms[0m

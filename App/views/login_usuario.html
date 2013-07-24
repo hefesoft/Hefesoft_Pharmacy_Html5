@@ -1,0 +1,44 @@
+
+<style scoped>        
+                .required {
+                    font-weight: bold;
+                }
+            
+                .valid {
+                    color: green;
+                }
+
+                .invalid {
+                    color: red;
+                }
+                span.k-tooltip {
+                    margin-left: 6px;
+                }
+            </style>
+
+<section>
+    <h2 data-bind="html:displayName"></h2>
+
+    <div id="Contenedor">        
+            <ul>
+                <li>
+                    <label for="nombreusuario" class="required">Nombre de usuario</label>
+                    <input type="text" id="nombreusuario" data-bind="value: usuario" name="nombreusuario" class="k-textbox" placeholder="Nombre de usuario" required validationMessage="Por favor ingrese {0}" />
+                </li>
+                <li>
+                    <label for="contrasenia" class="required">Contrasenia</label>
+                    <input type="password" id="contrasenia" data-bind="value: password" name="contrasenia" class="k-textbox" placeholder="Contrasenia" required validationMessage="Por favor ingrese {0}" />
+                </li>
+
+                <li  class="accept">
+                    <button class="k-button" type="submit">Ingresar</button>
+                </li>
+
+                 <li class="status">
+                </li>
+                
+            </ul>
+
+    </div>
+
+</section>

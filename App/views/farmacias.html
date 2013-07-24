@@ -1,0 +1,26 @@
+
+<section>
+    <h2 data-bind="html:displayName"></h2>    
+
+
+
+    <div id="Farmacias">
+        <div 
+             id="Grid_Farmacias"
+             data-role="grid" 
+             data-bind="source: datasource" 
+             data-editable = "inline"
+             data-toolbar='["create"]'
+             data-columns='[
+                            {"field": "Nombre", "title": "Nombres"}, 
+                            {"field": "Telefono", "title": "Telefono"},
+                            {"field": "Telefono2", "title": "Segundo telefono"},                            
+                            {"field": "Direccion", "title": "Direccion"},   
+                            {"command": ["edit","destroy"]}
+                           ]'             
+             >
+        </div>
+    </div>
+
+    </div>   
+</section>
