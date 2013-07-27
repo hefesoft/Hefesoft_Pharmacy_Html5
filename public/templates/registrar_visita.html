@@ -7,12 +7,7 @@
     # } #
           <h3 class="item-title">${Nombre_Mostrar}</h3>
           <p class="item-info">${Direccion_Mostrar}</p>
-          <a class="reply"
-            data-role="button"
-            data-rel="actionsheet"
-            href="\\#inboxActions"
-            data-actionsheet-context="#:id + '@' +Tipo + "@" +Id_Unidad_Visita#"
-            >Opciones</a>
+          <a class="details-link" data-role="button" data-rel="actionsheet" href="\\#inboxActions" data-actionsheet-context="#:id + '@' +Tipo + "@" +Id_Unidad_Visita#">Opciones</a>
 
     # if (Visitado == null){ #     
           <a id='#= id #' data-role="button" onclick="app.registrar_view.viewModel.registrar(#= id #)" class="details-link">Visitar</a>

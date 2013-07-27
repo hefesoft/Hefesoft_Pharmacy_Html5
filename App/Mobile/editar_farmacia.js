@@ -2,64 +2,70 @@ define([
 "jQuery",
 "Mobile/utils",
  "kendo",
- 'Data/Farmacias',
  'Promesas/q.min',
  'MobileServices.Web-1.0.0.min',
  'Data/Zonas_Geograficas',
  'Util/Util'
  ],
- function ($, utils, kendo, dataContext, Q, Azure_Mobile_Services, zonas_Geograficas, util) {
+ function ($, utils, kendo, Q, Azure_Mobile_Services, zonas_Geograficas, util) {
+
+     var dataContext;
 
      var viewModel = {
          loaded: function loaded() {
 
-             dataContext.cargarCanales('', Q, Azure_Mobile_Services).then(function (result) {
-                 if (result.length > 0) {
-                     ui_Cargar_Canales(result);
-                 }
-                 else {
-                     toastr.warning('Especialidades no cargadas');
-                 }
-             }, function (error) { toastr.warning(error); });
-             zonas_Geograficas.cargarDepartamentos('', Q, Azure_Mobile_Services).then(function (result) {
-                 if (result.length > 0) {
-                     ui_Cargar_Departamentos(result);
-                 }
-                 else {
-                     toastr.warning('Error cargando departamentos');
-                 }
-             }, function (error) { toastr.warning(error); });
-             dataContext.cargarFarmacia_Por_Id('', Q, Azure_Mobile_Services, app.vars.temp.idFarmacia).then(function (result) {
-                 if (result.length > 0) {
-                     uiCargarDatosFarmacia(result[0]);
-                 }
-                 else {
-                     toastr.warning('Usuario no cargado');
-                 }
-             }, function (error) { toastr.warning(error); });
+             // Cargo el dataContext si se carga en el define va instanciar el datasource sin necesitarlo
+             require(['Data/Farmacias'], function (data) {
 
-             $('#Actualizar').click(function () {
-                 var farmacia = viewModel.Farmacia_Entidad;
-                 if (farmacia.FechaNacimientoAdministrador != null) {
-                     farmacia.FechaNacimientoAdministrador = moment(farmacia.FechaNacimientoAdministrador).format('MM/DD/YYYY');
-                 }
-                 util.eliminarPropiedadesNoDefinidas(farmacia);
-                 dataContext.actualizar_Farmacia('', Q, Azure_Mobile_Services, farmacia);
+                 dataContext = data;
+                 dataContext.cargarCanales('', Q, Azure_Mobile_Services).then(function (result) {
+                     if (result.length > 0) {
+                         ui_Cargar_Canales(result);
+                     }
+                     else {
+                         toastr.warning('Especialidades no cargadas');
+                     }
+                 }, function (error) { toastr.warning(error); });
+                 zonas_Geograficas.cargarDepartamentos('', Q, Azure_Mobile_Services).then(function (result) {
+                     if (result.length > 0) {
+                         ui_Cargar_Departamentos(result);
+                     }
+                     else {
+                         toastr.warning('Error cargando departamentos');
+                     }
+                 }, function (error) { toastr.warning(error); });
+                 dataContext.cargarFarmacia_Por_Id('', Q, Azure_Mobile_Services, app.vars.temp.idFarmacia).then(function (result) {
+                     if (result.length > 0) {
+                         uiCargarDatosFarmacia(result[0]);
+                     }
+                     else {
+                         toastr.warning('Usuario no cargado');
+                     }
+                 }, function (error) { toastr.warning(error); });
 
-                 viewModel.Layout.set("Read", "inherit");
-                 viewModel.Layout.set("Edit", "none");
+                 $('#Actualizar').click(function () {
+                     var farmacia = viewModel.Farmacia_Entidad;
+                     if (farmacia.FechaNacimientoAdministrador != null) {
+                         farmacia.FechaNacimientoAdministrador = moment(farmacia.FechaNacimientoAdministrador).format('MM/DD/YYYY');
+                     }
+                     util.eliminarPropiedadesNoDefinidas(farmacia);
+                     dataContext.actualizar_Farmacia('', Q, Azure_Mobile_Services, farmacia);
 
-                 $('#Modificar').css('display', 'inherit');
-                 $(this).css('display', 'none');
+                     viewModel.Layout.set("Read", "inherit");
+                     viewModel.Layout.set("Edit", "none");
 
-             });
+                     $('#Modificar').css('display', 'inherit');
+                     $(this).css('display', 'none');
 
-             $("#Modificar").click(function () {
-                 viewModel.Layout.set("Read", "none");
-                 viewModel.Layout.set("Edit", "inherit");
-                 $('#Actualizar').css('display', 'inherit');
-                 $(this).css('display', 'none');
-             });
+                 });
+
+                 $("#Modificar").click(function () {
+                     viewModel.Layout.set("Read", "none");
+                     viewModel.Layout.set("Edit", "inherit");
+                     $('#Actualizar').css('display', 'inherit');
+                     $(this).css('display', 'none');
+                 });
+             })
          },
          Farmacia_Entidad: kendo.observable({
              id: -1,
