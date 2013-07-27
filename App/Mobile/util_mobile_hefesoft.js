@@ -26,9 +26,11 @@ define([
         //Loads external templates from path and injects in to page DOM
         return{
             //Method: loadExtTemplate
-            //Params: (string) path: the relative path to a file that contains template definition(s)
+            //Params: (string) path: the relative path to a file that contains template definition(s)           
+
             loadExtTemplate: function(path){
                 //Use jQuery Ajax to fetch the template file
+                require(['jQuery'], function ($) {
                 var tmplLoader = $.get(path)
                     .success(function(result){
                         //On success, Add templates to DOM (assumes file only has template definitions)
@@ -46,9 +48,10 @@ define([
                         },1000);
                     
                 });
+                })
             }
         };
-    })($, document);
+    })(window.$, document);
 
     
     

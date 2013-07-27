@@ -7,14 +7,20 @@
     # } #
           <h3 class="item-title">${Nombre_Mostrar}</h3>
           <p class="item-info">${Direccion_Mostrar}</p>
-          <a class="details-link" data-role="button" data-rel="actionsheet" href="\\#inboxActions" data-actionsheet-context="#:id + '@' +Tipo + "@" +Id_Unidad_Visita#">Opciones</a>
+          <div class="details-link">
+               # if (Visitado == null){ #     
+                      <a id='#= id #' data-role="button" onclick="app.registrar_view.viewModel.registrar(#= id #)">Visitar</a>
+               # } else { #
+                      <a id='#= id #' data-role="button" style="visibility: collapse">Visitar</a>
+               # } #
 
-    # if (Visitado == null){ #     
-          <a id='#= id #' data-role="button" onclick="app.registrar_view.viewModel.registrar(#= id #)" class="details-link">Visitar</a>
-   # } else { #
-          <a id='#= id #' data-role="button" style="visibility: collapse" class="details-link">Visitar</a>
-    # } #
+                <a data-role="button" data-rel="actionsheet" href="\\#inboxActions" data-actionsheet-context="#:id + '@' +Tipo + "@" +Id_Unidad_Visita#">Opciones</a>
+
+          </div>
 
 </script>
+
+
+
 
 

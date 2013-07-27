@@ -1,3 +1,5 @@
+
+
 .km-ios #left-drawer .km-content, .km-android #left-drawer .km-content, .km-blackberry #left-drawer .km-content,
     .km-ios #left-drawer .km-list > li, .km-android #left-drawer .km-list > li, .km-blackberry #left-drawer .km-list > li,
     .km-ios #left-drawer .km-listview-link > .km-icon, .km-android #left-drawer .km-listview-link > .km-icon, .km-blackberry #left-drawer .km-listview-link > .km-icon,
@@ -118,11 +120,11 @@
 
 #flat-listview .details-link
 {
-    /*margin-top: -1em;
+    margin-top: -1em;
     position: absolute;
     right: 0.6em;
-    top: 50%;*/
-    background-color: #974d2e;
+    top: 50%;
+    /*background-color: #974d2e;*/
 }
 
 #flat-listview .km-listview .km-list
@@ -234,3 +236,9 @@
         color: #fff;
         text-shadow: 0 -1px rgba(0,0,0,.5);
     }
+
+    li span { 
+        float:right;     
+    }
+
+
