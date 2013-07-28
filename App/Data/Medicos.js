@@ -12,7 +12,8 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
         Listado_Medicos : cargar_Medicos(global),
         cargarEspecialidades : cargarEspecialidades,
         cargarMedico_Por_Id : cargarMedico_Por_Id,
-        actualizar_Medico : actualizar_Medico
+        actualizar_Medico : actualizar_Medico,
+        cargarMedico_AutoCompletar : cargarMedico_AutoCompletar
     };
     return medicos;
 });
@@ -146,7 +147,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
         var todoItemTable = client.getTable('TP_Medico');
 
         var query = todoItemTable
-        .read({ esprocedimiento: '1' })
+        .read({ esprocedimiento: '1', idMedico : id })
          .done(function (results) {
              if (results.length > 0) {
                  deferred.resolve(results);
@@ -160,7 +161,6 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
 
         return deferred.promise;
     };
-
     function actualizar_Medico(global,Q,Azure_Mobile_Services,medico){
         // var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
@@ -182,4 +182,25 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
          });
 
         return deferred.promise;*/
+    };
+    function cargarMedico_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
+        var deferred = Q.defer();
+        var MobileServiceClient = WindowsAzure.MobileServiceClient;
+        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var todoItemTable = client.getTable('TP_Medico');
+
+        var query = todoItemTable
+        .read({ esprocedimiento: '1', buscador : '1', nombreBuscar: nombre  })
+         .done(function (results) {
+             if (results.length > 0) {
+                 deferred.resolve(results);
+             }
+             else {
+                 deferred.resolve(results);
+             }
+         }, function (err) {
+             deferred.reject(new Error("Error " + err));
+         });
+
+        return deferred.promise;
     };

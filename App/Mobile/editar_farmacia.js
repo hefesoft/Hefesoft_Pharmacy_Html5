@@ -1,6 +1,6 @@
 define([
-"jQuery",
-"Mobile/utils",
+ "jQuery",
+ "Mobile/utils",
  "kendo",
  'Promesas/q.min',
  'MobileServices.Web-1.0.0.min',
@@ -34,6 +34,7 @@ define([
                          toastr.warning('Error cargando departamentos');
                      }
                  }, function (error) { toastr.warning(error); });
+                 
                  dataContext.cargarFarmacia_Por_Id('', Q, Azure_Mobile_Services, app.vars.temp.idFarmacia).then(function (result) {
                      if (result.length > 0) {
                          uiCargarDatosFarmacia(result[0]);

@@ -9,8 +9,10 @@ define(
  "kendo",
  "Toastr",
  "Mobile/Vars",
+ "Promesas/q.min",
+ "MobileServices.Web-1.0.0.min",
  ],
- function ($, utils, dataContext, util_hefesoft, kendo, toastr, vars) {
+ function ($, utils, dataContext, util_hefesoft, kendo, toastr, vars, Q, Azure_Mobile_Services) {
      util_hefesoft = util_hefesoft;
      // Como se crea un evento en javascript ver tambien util mobile
      $(document).bind("TEMPLATE_LOADED", function (e) {
@@ -49,13 +51,42 @@ define(
                      headerTemplate: "<h2>Letter ${value}</h2>"
                  });
 
+                 $("#closeModalViewMedico").click(function () {
+                     $("#modalview-login").kendoMobileModalView("close");
+                 });
+
+
+
+
+                 $('#buscador_medicos').keyup(function () {
+                     var myLength = $("#buscador_medicos").val().length;
+
+                     if (myLength >= 1) {
+                         require(['Data/Medicos'], function (dataMedicos) {
+                             var buscarPor = $('#buscador_medicos').val();
+                             dataMedicos.cargarMedico_AutoCompletar('', Q, Azure_Mobile_Services, buscarPor).then(function (result) {
+                                 if (result.length > 0) {
+                                     $('#listado_Medicos').kendoMobileListView({
+                                         dataSource: result,
+                                         template: "${Nombres}" + " " + "${Apellidos}",
+                                         fixedHeaders: true
+                                     });
+                                 }
+                                 else {
+                                     toastr.warning('Usuario no cargado');
+                                 }
+                             }, function (error) { toastr.warning(error); });
+                         })
+                     }
+                 });
+
 
              },
              registrar: function (id) {
                  dataContext.DataSource.updateField({ keyField: 'id', keyValue: id, updateField: 'Visitado', updateValue: true });
              },
              informacion: informacion,
-             util_hefesoft : util_hefesoft
+             util_hefesoft: util_hefesoft
          }
      };
  });
