@@ -11,6 +11,12 @@ define([
      var viewModel = {
          loaded: function loaded() {
 
+             $("#numero_Elementos").bind("change", function() {
+                 var numeroElementos = viewModel.producto_detalle.get("numero_elementos");
+                 var precio = viewModel.producto_detalle.get("precioNoFormateado");
+                 viewModel.producto_detalle.set("valorCalculado",kendo.toString(numeroElementos * precio,"n"));
+              });
+
              $("#closeModalViewDetalleProducto").click(function () {
                  $("#modalview-detalle-producto").kendoMobileModalView("close");
              });
@@ -32,6 +38,7 @@ define([
                                          var item = e.dataItem;
                                          viewModel.producto_detalle.set("alias", item.alias);
                                          viewModel.producto_detalle.set("precio", kendo.toString(item.precio, "n"));
+                                         viewModel.producto_detalle.set("precioNoFormateado", item.precio);
                                          viewModel.producto_detalle.set("iva", kendo.toString(item.iva, "p"));
                                          viewModel.producto_detalle.set("forma_farmaceutica", item.forma_farmaceutica);
                                          viewModel.producto_detalle.set("marca", item.marca);
@@ -40,6 +47,7 @@ define([
                                          viewModel.producto_detalle.set("Campo", item.Campo);
                                          viewModel.producto_detalle.set("presentacion_comercial", item.presentacion_comercial);
                                          viewModel.producto_detalle.set("informacion_adicional", item.informacion_adicional);
+                                         viewModel.producto_detalle.set("valorCalculado", kendo.toString(item.precio, "n"));                                         
                                          $("#modalview-detalle-producto").kendoMobileModalView("open");
                                      }
                                  });
@@ -56,17 +64,19 @@ define([
 
          },
          producto_detalle: kendo.observable({
-             alias : '',
-             precio : 0,
-             iva : 0.0,
-             forma_farmaceutica : '',
-             marca : '',
-             unidad : '',
-             principio : '',
-             Campo : '',
-             presentacion_comercial : '',
-             informacion_adicional : '',
-             numero_elementos : 1
+             alias: '',
+             precio: 0,
+             iva: 0.0,
+             forma_farmaceutica: '',
+             marca: '',
+             unidad: '',
+             principio: '',
+             Campo: '',
+             presentacion_comercial: '',
+             informacion_adicional: '',
+             numero_elementos: 1,
+             precioNoFormateado : 0,
+             valorCalculado: 0,
          }),
          pedido_Entidad: kendo.observable({
 
@@ -78,7 +88,7 @@ define([
          Layout: kendo.observable({
              Read: "inherit",
              Edit: "none"
-         })         
+         })
      };
 
      return {

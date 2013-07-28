@@ -24,11 +24,11 @@
 
         <div style="display: inline-block">
             <a id="Agregar_Carrito"  data-role="button">Agregar a carrito</a>        
-        </div>
-
+            <span data-bind="text: producto_detalle.valorCalculado" ></span>
+        </div>        
             <div>
                 <ul data-role="listview" data-style="inset">
-                   <li><label>Numero elementos<input type="number" data-bind="value: producto_detalle.numero_elementos" placeholder="Numero elementos"/></label></li>
+                   <li><label>Numero elementos<input id="numero_Elementos" type="number" data-bind="value: producto_detalle.numero_elementos" placeholder="Numero elementos"/></label></li>
                     <li data-bind="style: {display: Layout.Read}">Nombres <span data-bind="text: producto_detalle.alias" ></span></li>
                     <li data-bind="style: {display: Layout.Read}">Precio <span data-bind="text: producto_detalle.precio" ></span></li>
                     <li data-bind="style: {display: Layout.Read}">Iva <span data-bind="text: producto_detalle.iva" ></span></li>
