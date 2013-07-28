@@ -1,0 +1,53 @@
+<div id="editar-pedido-view" data-role="view" data-model="app.pedido_view.viewModel" data-init="app.pedido_view.viewModel.loaded" data-title="Realizar pedido" data-use-native-scrolling="true">
+    
+     <header data-role="header">
+        <div data-role="navbar">            
+            <a data-role="button" data-rel="drawer" href="#left-drawer" data-icon="comments" data-align="left"></a>
+            <span data-role="view-title">Realizar pedido</span>
+        </div>
+    </header>
+
+      <div>
+          <input id="buscador_producto" type="search" style="width:94%; height: 45px; margin: 8px 3% 8px 3%; padding-left:10px; padding-right:10px;" placeholder="Digite el nombre de el producto a buscar" autocapitalize="off" autocorrect="off" />
+          <ul id="listado_productos"></ul>
+      </div>
+        
+    
+
+    <div data-role="modalview" id="modalview-detalle-producto" style="width: 95%; height: 18em;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span>Detalle producto</span>
+                    <a id="closeModalViewDetalleProducto" data-role="button" data-align="right">Cerrar</a>
+            </div>
+        </div>
+
+        <div style="display: inline-block">
+            <a id="Agregar_Carrito"  data-role="button">Agregar a carrito</a>        
+        </div>
+
+            <div>
+                <ul data-role="listview" data-style="inset">
+                   <li><label>Numero elementos<input type="number" data-bind="value: producto_detalle.numero_elementos" placeholder="Numero elementos"/></label></li>
+                    <li data-bind="style: {display: Layout.Read}">Nombres <span data-bind="text: producto_detalle.alias" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Precio <span data-bind="text: producto_detalle.precio" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Iva <span data-bind="text: producto_detalle.iva" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Forma farmaceutica <span data-bind="text: producto_detalle.forma_farmaceutica" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Marca <span data-bind="text: producto_detalle.marca" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Unidad <span data-bind="text: producto_detalle.unidad" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Principio <span data-bind="text: producto_detalle.principio" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Campo <span data-bind="text: producto_detalle.Campo" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Presentacion comercial <span data-bind="text: producto_detalle.presentacion_comercial" ></span></li>
+                    <li data-bind="style: {display: Layout.Read}">Informacion adicional <span data-bind="text: producto_detalle.informacion_adicional" ></span></li>
+                </ul>
+            </div>
+
+        </div>
+
+    <script type="text/x-kendo-template" id="adicionarTemplate">    
+        <a>#= alias #</a><a data-role="detailbutton"  data-style="contactadd"></a>
+    </script>
+
+</div>
+
+

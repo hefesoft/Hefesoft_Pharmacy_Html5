@@ -16,8 +16,7 @@
            <ul data-role="actionsheet" id="inboxActions" data-open="onOpen" data-popup='{"direction": "left"}'>
               <li class="km-actionsheet-title">Opciones:</li>
               <li><a href="#" data-action="informacion">Informacion</a></li>
-              <li><a href="#" data-action="replyAll">----</a></li>
-              <li><a href="#" data-action="archive">-----</a></li>
+              <li><a href="#" data-action="pedido">Hacer pedido</a></li>              
            </ul>
 
         <div data-role="modalview" id="modalview-login" style="width: 95%; height: 18em;">
@@ -25,8 +24,8 @@
                 <div data-role="navbar">
                     <span>Buscar Medicos</span>
                     <a id="closeModalViewMedico" data-role="button" data-align="right">Cerrar</a>
-                </div>
             </div>
+        </div>
 
             <div>
                 <input id="buscador_medicos" type="search" style="width:94%; height: 45px; margin: 8px 3% 8px 3%; padding-left:10px; padding-right:10px;" placeholder="Digite el nombre de el medico a buscar" autocapitalize="off" autocorrect="off" />
@@ -34,6 +33,28 @@
             </div>
 
         </div>
+
+    <script type="text/x-kendo-template" id="customListViewTemplate">
+    # if (Tipo == 'Medico'){ #     
+     <img class="item-photo" src="../images/medico.gif" />
+   # } else if (Tipo == 'Farmacia'){ #
+     <img class="item-photo" src="../images/farmacia.gif" />
+    # } #
+          <h3 class="item-title">${Nombre_Mostrar}</h3>
+          <p class="item-info">${Direccion_Mostrar}</p>
+          <div class="details-link">
+               # if (Visitado == null){ #     
+                      <a id='#= id #' data-role="button" onclick="app.registrar_view.viewModel.registrar(#= id #)">Visitar</a>
+               # } else { #
+                      <a id='#= id #' data-role="button" style="visibility: collapse">Visitar</a>
+               # } #
+
+                <a data-role="button" data-rel="actionsheet" href="\\#inboxActions" data-actionsheet-context="#:id + '@' +Tipo + "@" +Id_Unidad_Visita#">Opciones</a>
+
+          </div>
+
+</script>
+
       </div>
 
    

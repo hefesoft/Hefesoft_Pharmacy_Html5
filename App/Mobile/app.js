@@ -9,9 +9,10 @@ define(
 "Mobile/splash",
 "Mobile/editar_medico",
 "Mobile/editar_farmacia",
-"Mobile/Vars"
+"Mobile/pedido",
+"Mobile/Vars",
 ],
-    function ($, kendo, utils, login_view, registrar_view, medicos_view, splash_view, editar_medico_view, editar_farmacia_view, vars) {
+    function ($, kendo, utils, login_view, registrar_view, medicos_view, splash_view, editar_medico_view, editar_farmacia_view, pedido_view, vars) {
 
         var _onError = function (error, url, line) {
             utils.showError(error);
@@ -37,6 +38,7 @@ define(
             splash_view: splash_view,
             editar_medico_view: editar_medico_view,
             editar_farmacia_view : editar_farmacia_view,
+            pedido_view : pedido_view,
             vars : vars            
         };
     });

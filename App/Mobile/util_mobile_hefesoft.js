@@ -5,7 +5,7 @@ define([
  ], 
  function ($, utils, kendo) {
     return {
-            templateLoader : templateLoader,
+            //templateLoader : templateLoader,
             menuIzquierda : function (paginaNavegar, menuIzquierda){
                     $.ajax({
                         url: menuIzquierda,
@@ -22,7 +22,7 @@ define([
 });
 
     //Creates a gloabl object called templateLoader with a single method "loadExtTemplate"
-    var templateLoader = (function($,host){
+    /*var templateLoader = (function($,host){
         //Loads external templates from path and injects in to page DOM
         return{
             //Method: loadExtTemplate
@@ -51,7 +51,7 @@ define([
                 })
             }
         };
-    })(window.$, document);
+    })(window.$, document);*/
 
     
     

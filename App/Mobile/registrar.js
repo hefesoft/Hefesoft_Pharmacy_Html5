@@ -12,28 +12,7 @@ define(
  "Promesas/q.min",
  "MobileServices.Web-1.0.0.min",
  ],
- function ($, utils, dataContext, util_hefesoft, kendo, toastr, vars, Q, Azure_Mobile_Services) {
-     util_hefesoft = util_hefesoft;
-     // Como se crea un evento en javascript ver tambien util mobile
-     $(document).bind("TEMPLATE_LOADED", function (e) {
-
-         var dataSourceExtensions = {
-             updateField: function (e) {
-                 var ds = this;
-                 $.each(ds._data, function (idx, record) {
-                     if (record[e.keyField] == e.keyValue) {
-                         ds.data()[idx].set(e.updateField, e.updateValue);
-                         ds.sync();
-                         return true;
-                     }
-                 });
-             }
-         };
-
-         $.extend(true, kendo.data.DataSource.prototype, dataSourceExtensions);
-     });
-
-     util_hefesoft.templateLoader.loadExtTemplate("../templates/registrar_visita.html");
+ function ($, utils, dataContext, util_hefesoft, kendo, toastr, vars, Q, Azure_Mobile_Services) {  
 
      return {
          viewModel: {
@@ -86,6 +65,7 @@ define(
                  dataContext.DataSource.updateField({ keyField: 'id', keyValue: id, updateField: 'Visitado', updateValue: true });
              },
              informacion: informacion,
+             pedido: pedido,
              util_hefesoft: util_hefesoft
          }
      };
@@ -105,5 +85,22 @@ define(
          {              
               app.vars.temp["idFarmacia"] = id_Unidad_Visita;
               app.registrar_view.viewModel.util_hefesoft.menuIzquierda("../mobile/editar_farmacia.html", "../mobile/drawer.html");
+         }
+    }
+
+ function pedido(e) {
+     var n = e.context.split("@");
+     var tipo = n[1];
+     var id_Visita = n[0];
+     var id_Unidad_Visita = n[2];
+         if(tipo == 'Medico')
+         {              
+              app.vars.temp["idMedico"] = id_Unidad_Visita;
+              app.registrar_view.viewModel.util_hefesoft.menuIzquierda("../mobile/pedido.html", "../mobile/drawer.html");
+         }
+         else if(tipo == 'Farmacia')
+         {              
+              app.vars.temp["idFarmacia"] = id_Unidad_Visita;
+              app.registrar_view.viewModel.util_hefesoft.menuIzquierda("../mobile/pedido.html", "../mobile/drawer.html");
          }
     }
