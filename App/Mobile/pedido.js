@@ -35,6 +35,7 @@ define([
                                      dataSource: result,
                                      template: $("#adicionarTemplate").html(),
                                      click: function (e) {
+                                         $("#modalview-detalle-producto").kendoMobileModalView("open");
                                          var item = e.dataItem;
                                          viewModel.producto_detalle.set("alias", item.alias);
                                          viewModel.producto_detalle.set("precio", kendo.toString(item.precio, "n"));
@@ -47,8 +48,7 @@ define([
                                          viewModel.producto_detalle.set("Campo", item.Campo);
                                          viewModel.producto_detalle.set("presentacion_comercial", item.presentacion_comercial);
                                          viewModel.producto_detalle.set("informacion_adicional", item.informacion_adicional);
-                                         viewModel.producto_detalle.set("valorCalculado", kendo.toString(item.precio, "n"));                                         
-                                         $("#modalview-detalle-producto").kendoMobileModalView("open");
+                                         viewModel.producto_detalle.set("valorCalculado", kendo.toString(item.precio, "n"));                                      
                                      }
                                  });
 

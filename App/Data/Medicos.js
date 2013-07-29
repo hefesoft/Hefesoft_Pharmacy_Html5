@@ -109,12 +109,13 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
                         id: { editable: false, type: "int" },
                         Apellidos: { validation: { required: true }, type: "string" },
                         Nombres: { validation: { required: true }, type: "string" },
-                        NumeroDocumento: { validation: { required: true }, type: "string" },
+                        Numero_Documento: { validation: { required: true }, type: "string" },
                         //Si es un propiedad dependiente debe dejarse el valor por defecto si no se totea
                         IdTipoDocumento: { defaultValue: { id: 1, CategoryName: "Cedula"} }
                     }
                 }
-            }
+            },
+            pageSize: 10
         });
 
         remoteDataSource.read();
