@@ -17,30 +17,23 @@ define([
 
      medicos.prototype.viewAttached = function (view) {
 
-         require(['Data/Medicos'], function (data) {
-             dataContext = data;
-             dataContext.Listado_Medicos.read();
+         require(['Data/Medicos', "Promesas/q.min", "MobileServices.Web-1.0.0.min"], function (dataMedicos, Q, Azure_Mobile_Services) {
+             dataContext = dataMedicos;
 
-             var vm = kendo.observable({
-                 datasource: dataContext.Listado_Medicos,
-                 datasource_Tipo_Documento: dataContext.Tp_Tipo_Documento,
-                 getRoleName: obtenerTipoDocumento
+             $("#buscar").click(function () { 
+
+             var buscarPor = $('#buscador_medicos').val();
+             dataMedicos.cargarMedico_AutoCompletar('', Q, Azure_Mobile_Services, buscarPor).then(function (result) {
+                 if (result.length > 0) {
+                     cargarGrilla(result)
+                 }
+                 else {
+                     toastr.warning('Sin resultados');
+                 }
+             }, function (error) { toastr.warning(error); });
+
              });
 
-             kendo.bind($("#Medicos"), vm);
-
-             var grid = $("#Grid_Medico").kendoGrid({
-                 dataSource: vm.datasource,
-                 pageable: true,
-                 height: 430,
-                 columns: [
-                            { field: "Nombres", title: "Nombres" },
-                            { field: "Apellidos", title: "Apellidos" },
-                            { field: "NumeroDocumento", title: "Numero Documento" },
-                            { field: "IdTipoDocumento", title: "Tipo documento", editor: tipoDocumentoDropDownEditor, "template": "#= parent().parent().getRoleName(IdTipoDocumento) #" },
-                            { command: ["edit", "destroy", { text: "Detalles", click: showDetails}]}],
-                 editable: "inline"
-             }).data("kendoGrid");
          }
          );
 
@@ -49,7 +42,7 @@ define([
      function showDetails(e) {
          e.preventDefault();
          var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-         router.navigateTo('editar_medico?codigomedico='+dataItem.id);
+         router.navigateTo('editar_medico?codigomedico=' + dataItem.id);
      }
 
      function obtenerTipoDocumento(roleId) {
@@ -62,6 +55,39 @@ define([
          });
          return roleName;
      };
+
+     function cargarGrilla(dataSourceAutocompletar) {
+         var vm = kendo.observable({
+             datasource: dataSourceAutocompletar,
+             datasource_Tipo_Documento: dataContext.Tp_Tipo_Documento,
+             getRoleName: obtenerTipoDocumento
+         });
+
+         kendo.bind($("#Medicos"), vm);
+
+         var grid = $("#Grid_Medico").kendoGrid({
+             dataSource: {
+                            data: dataSourceAutocompletar,
+                            schema: {
+                                model: {
+                                    fields: {
+                                        Nombres: { type: "string" },
+                                        Apellidos: { type: "string" },
+                                        Numero_Documento: { type: "number" }                                        
+                                    }
+                                }
+                            }                            
+                        },
+             columns: [
+                            { field: "Nombres", title: "Nombres" },
+                            { field: "Apellidos", title: "Apellidos" },
+                            { field: "Numero_Documento", title: "Numero Documento" },
+                            //{ field: "IdTipoDocumento", title: "Tipo documento", editor: tipoDocumentoDropDownEditor, "template": "#= parent().parent().getRoleName(IdTipoDocumento) #" },
+             //{ command: ["edit", "destroy", { text: "Detalles", click: showDetails}]}],
+                            {command: [{ text: "Editar", click: showDetails}]}]
+             //, editable: "inline"
+         }).data("kendoGrid");
+     }
 
      function tipoDocumentoDropDownEditor(container, options) {
          $('<input required data-text-field="Descripcion" data-value-field="id" data-bind="value:' + options.field + '"/>')
