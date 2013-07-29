@@ -3,6 +3,7 @@
 /// <reference path="../../Scripts/jquery-1.9.1.intellisense.js" />
 
 define([
+ 'jQuery',
  'durandal/system',
  'logger',
  'durandal/plugins/router',
@@ -13,7 +14,7 @@ define([
  'Data/Zonas_Geograficas',
  'Util/Util'
  ],
- function (system, logger, router, global, dataContext, Q, Azure_Mobile_Services, zonas_Geograficas, util) {
+ function ($, system, logger, router, global, dataContext, Q, Azure_Mobile_Services, zonas_Geograficas, util) {
 
      var vm;
      var codigoMedico;
@@ -24,7 +25,7 @@ define([
      };
 
      function activate(context) {
-         codigoMedico = context.codigomedico;         
+         codigoMedico = context.codigomedico;
 
          dataContext.cargarMedico_Por_Id(global, Q, Azure_Mobile_Services, codigoMedico).then(function (result) {
              if (result.length > 0) {
@@ -38,19 +39,12 @@ define([
 
      editar_medico.prototype.viewAttached = function (view) {
 
-         $("#nav").css('display', 'none');
+         //$("#nav").css('display', 'none');
 
          $("#guardar_cambios").click(function () {
              vm.FechaNacimiento = moment(vm.FechaNacimiento).format('MM/DD/YYYY');
              util.eliminarPropiedadesNoDefinidas(vm);
-             dataContext.actualizar_Medico(global, Q, Azure_Mobile_Services, vm).then(function (result) {
-                 if (result.length > 0) {
-                     ui_Cargar_Especialidades(result);
-                 }
-                 else {
-                     toastr.warning('Especialidades no cargadas');
-                 }
-             }, function (error) { toastr.warning(error); });
+             dataContext.actualizar_Medico(global, Q, Azure_Mobile_Services, vm);
          });
 
          $("#fecha_nacimiento").kendoDatePicker();

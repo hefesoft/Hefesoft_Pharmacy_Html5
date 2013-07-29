@@ -52,7 +52,7 @@ define(
                         { url: 'farmacias', moduleId: 'viewmodels/farmacias', name: 'Farmacias', visible: false, settings: { area: 'Farmacias'} },
                         { url: 'ciclos', moduleId: 'viewmodels/ciclos', name: 'Ciclos', visible: false, settings: { area: 'Ciclos'} },
                         { url: 'panel', moduleId: 'viewmodels/panel', name: 'Panel', visible: false, settings: { area: 'Panel'} },
-                        { url: 'editar_medico', moduleId: 'viewmodels/editar_medico', name: 'Editar Medico', visible: true, settings: { area: 'Medicos'} },
+                        { url: 'editar_medico', moduleId: 'viewmodels/editar_medico', name: 'Editar Medico', visible: false, settings: { area: 'Medicos'} },
                         { url: 'planear', moduleId: 'viewmodels/planear', name: 'Planear', visible: false, settings: { area: 'Planear'} }
                     ];
 

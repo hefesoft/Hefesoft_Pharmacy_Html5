@@ -32,7 +32,7 @@ define(
         { url: 'farmacias', moduleId: 'viewmodels/farmacias', name: 'Farmacias', visible: true, settings: { area: 'Farmacias'} },
         { url: 'ciclos', moduleId: 'viewmodels/ciclos', name: 'Ciclos', visible: true, settings: { area: 'Ciclos'} },
         { url: 'panel', moduleId: 'viewmodels/panel', name: 'Panel', visible: true, settings: { area: 'Panel'} },
-        { url: 'editar_medico', moduleId: 'viewmodels/editar_medico', name: 'Editar Medico', visible: true, settings: { area: 'Medicos'} },
+        { url: 'editar_medico', moduleId: 'viewmodels/editar_medico', name: 'Editar Medico', visible: false, settings: { area: 'Medicos'} },
         { url: 'planear', moduleId: 'viewmodels/planear', name: 'Planear', visible: true, settings: { area: 'Planear'} }];
 
         router.map(routes);

@@ -111,14 +111,12 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
                         Nombres: { validation: { required: true }, type: "string" },
                         Numero_Documento: { validation: { required: true }, type: "string" },
                         //Si es un propiedad dependiente debe dejarse el valor por defecto si no se totea
-                        IdTipoDocumento: { defaultValue: { id: 1, CategoryName: "Cedula"} }
+                        IdTipoDocumento: { defaultValue: { id: 1, CategoryName: "Cedula"}}
                     }
                 }
             },
             pageSize: 10
-        });
-
-        remoteDataSource.read();
+        });       
         return remoteDataSource;
     };      
     function cargarEspecialidades(global,Q,Azure_Mobile_Services){      

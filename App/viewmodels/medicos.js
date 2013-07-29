@@ -6,10 +6,10 @@ define([
 'durandal/system',
  'logger',
  'durandal/plugins/router',
- 'global/vars',
- 'Data/Medicos'
+ 'global/vars'
  ],
- function (system, logger, router, global, dataContext) {
+ function (system, logger, router, global) {
+     var dataContext;
 
      var medicos = function () {
          this.displayName = 'Parametrizar Medicos';
@@ -17,35 +17,51 @@ define([
 
      medicos.prototype.viewAttached = function (view) {
 
-         var vm = kendo.observable({
-             datasource: dataContext.Listado_Medicos,
-             datasource_Tipo_Documento : dataContext.Tp_Tipo_Documento,
-             getRoleName: obtenerTipoDocumento                       
+         require(['Data/Medicos'], function (data) {
+             dataContext = data;
+             dataContext.Listado_Medicos.read();
+
+             var vm = kendo.observable({
+                 datasource: dataContext.Listado_Medicos,
+                 datasource_Tipo_Documento: dataContext.Tp_Tipo_Documento,
+                 getRoleName: obtenerTipoDocumento
+             });
+
+             kendo.bind($("#Medicos"), vm);
+
+             var grid = $("#Grid_Medico").kendoGrid({
+                 dataSource: vm.datasource,
+                 pageable: true,
+                 height: 430,
+                 columns: [
+                            { field: "Nombres", title: "Nombres" },
+                            { field: "Apellidos", title: "Apellidos" },
+                            { field: "NumeroDocumento", title: "Numero Documento" },
+                            { field: "IdTipoDocumento", title: "Tipo documento", editor: tipoDocumentoDropDownEditor, "template": "#= parent().parent().getRoleName(IdTipoDocumento) #" },
+                            { command: ["edit", "destroy", { text: "Detalles", click: showDetails}]}],
+                 editable: "inline"
+             }).data("kendoGrid");
+         }
+         );
+
+     };
+
+     function showDetails(e) {
+         e.preventDefault();
+         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+         router.navigateTo('editar_medico?codigomedico='+dataItem.id);
+     }
+
+     function obtenerTipoDocumento(roleId) {
+         var roleName = "NA";
+         $.each(this.datasource_Tipo_Documento._data, function (idx, role) {
+             if (role.id == roleId) {
+                 roleName = role.Descripcion;
+                 return false;
+             }
          });
-
-         kendo.bind($("#Medicos"), vm);
-
-
-    var grid = $("#Grid_Medico").data("kendoGrid");
-            $.each(grid.columns, function(idx, column) {
-                if (column.field == "IdTipoDocumento") {
-                    column.editor = tipoDocumentoDropDownEditor;
-                    return false;
-                }
-            })
-
-     };     
-
-     function obtenerTipoDocumento (roleId) {
-                var roleName = "NA";
-                $.each(this.datasource_Tipo_Documento._data, function(idx, role) {
-                    if (role.id == roleId) {
-                    roleName = role.Descripcion;
-                    return false;
-                    }
-                });
-                return roleName;
-             };
+         return roleName;
+     };
 
      function tipoDocumentoDropDownEditor(container, options) {
          $('<input required data-text-field="Descripcion" data-value-field="id" data-bind="value:' + options.field + '"/>')
