@@ -7,6 +7,10 @@
         </div>
     </header>
 
+     <ul id="buttonGroup" data-role="buttongroup" data-index="0">
+        <li id="productos_Agregados" data-badge="0"><a>Productos</a></li>        
+     </ul>
+
       <div>
           <input id="buscador_producto" type="search" style="width:94%; height: 45px; margin: 8px 3% 8px 3%; padding-left:10px; padding-right:10px;" placeholder="Digite el nombre de el producto a buscar" autocapitalize="off" autocorrect="off" />
           <ul id="listado_productos"></ul>
@@ -14,7 +18,25 @@
         
     
 
-    <div data-role="modalview" id="modalview-detalle-producto" style="width: 95%; height: 18em;">
+    <div data-role="modalview" id="modalview-productos-adicionados" style="width: 95%; height: 40em;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span>Productos adicionados</span>
+                    <a id="closeModalViewproductosAdicionados" data-role="button" data-align="right">Cerrar</a>
+            </div>
+        </div>
+
+        <div style="display: inline-block">
+            <a id="hacer_pedido"  data-role="button">Hacer pedido</a>            
+        </div>        
+            <div>
+                <ul id="listviewProductosAgregados">                                                       
+                </ul>
+            </div>
+
+        </div>
+    
+     <div data-role="modalview" id="modalview-detalle-producto" style="width: 95%; height: 40em;">
             <div data-role="header">
                 <div data-role="navbar">
                     <span>Detalle producto</span>
@@ -46,6 +68,10 @@
 
     <script type="text/x-kendo-template" id="adicionarTemplate">    
         <a>#= alias #</a><a data-role="detailbutton"  data-style="contactadd"></a>
+    </script>
+
+    <script type="text/x-kendo-template" id="eliminarTemplate">    
+        <a>#= alias #</a><a data-role="detailbutton" data-style="rowdelete"></a>
     </script>
 
 </div>

@@ -8,18 +8,58 @@ define([
  ],
  function ($, utils, kendo, Q, Azure_Mobile_Services, util) {
 
+     var elementoSeleccionado;
+     var dataSourceProducto = kendo.data.DataSource.create({ data: [] })
+
+     function actualizarBadgeListas(modo) {
+         var buttongroup = $("#buttonGroup").data("kendoMobileButtonGroup");
+         // Set the first button badge value to 5
+         if (modo == 'agregar') {
+             dataSourceProducto.add(elementoSeleccionado);
+         }
+
+         numeroProductos = dataSourceProducto._data.length;
+         buttongroup.badge(0, numeroProductos);
+
+         $('#listviewProductosAgregados').kendoMobileListView(
+                    {
+                        dataSource: dataSourceProducto,
+                        template: $("#eliminarTemplate").html(),
+                        click: function (e) {
+                            var item = e.dataItem;
+                            dataSourceProducto.remove(item);
+                            var buttongroup = $("#buttonGroup").data("kendoMobileButtonGroup");
+                            numeroProductos = dataSourceProducto._data.length;
+                            buttongroup.badge(0, numeroProductos);
+                        }
+                    });
+     };
+
      var viewModel = {
          loaded: function loaded() {
 
-             $("#numero_Elementos").bind("change", function() {
+             $('#Agregar_Carrito').click(function () {
+                 actualizarBadgeListas('agregar');
+             });
+
+             $('#productos_Agregados').click(function () {
+                 $("#modalview-productos-adicionados").kendoMobileModalView("open");
+             });
+
+             $("#numero_Elementos").bind("change", function () {
                  var numeroElementos = viewModel.producto_detalle.get("numero_elementos");
                  var precio = viewModel.producto_detalle.get("precioNoFormateado");
-                 viewModel.producto_detalle.set("valorCalculado",kendo.toString(numeroElementos * precio,"n"));
-              });
+                 viewModel.producto_detalle.set("valorCalculado", kendo.toString(numeroElementos * precio, "n"));
+             });
 
              $("#closeModalViewDetalleProducto").click(function () {
                  $("#modalview-detalle-producto").kendoMobileModalView("close");
              });
+
+             $("#closeModalViewproductosAdicionados").click(function () {
+                 $("#modalview-productos-adicionados").kendoMobileModalView("close");
+             });
+
 
 
              $('#buscador_producto').keyup(function () {
@@ -37,6 +77,8 @@ define([
                                      click: function (e) {
                                          $("#modalview-detalle-producto").kendoMobileModalView("open");
                                          var item = e.dataItem;
+                                         elementoSeleccionado = item;
+
                                          viewModel.producto_detalle.set("alias", item.alias);
                                          viewModel.producto_detalle.set("precio", kendo.toString(item.precio, "n"));
                                          viewModel.producto_detalle.set("precioNoFormateado", item.precio);
@@ -48,7 +90,7 @@ define([
                                          viewModel.producto_detalle.set("Campo", item.Campo);
                                          viewModel.producto_detalle.set("presentacion_comercial", item.presentacion_comercial);
                                          viewModel.producto_detalle.set("informacion_adicional", item.informacion_adicional);
-                                         viewModel.producto_detalle.set("valorCalculado", kendo.toString(item.precio, "n"));                                      
+                                         viewModel.producto_detalle.set("valorCalculado", kendo.toString(item.precio, "n"));
                                      }
                                  });
 
@@ -75,8 +117,8 @@ define([
              presentacion_comercial: '',
              informacion_adicional: '',
              numero_elementos: 1,
-             precioNoFormateado : 0,
-             valorCalculado: 0,
+             precioNoFormateado: 0,
+             valorCalculado: 0
          }),
          pedido_Entidad: kendo.observable({
 
@@ -89,6 +131,8 @@ define([
              Read: "inherit",
              Edit: "none"
          })
+         ,
+         productos: []
      };
 
      return {
