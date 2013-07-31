@@ -3,7 +3,8 @@ define(['global/vars'], function (global) {
         Listado_Farmacias : cargar_TP_Farmacias(global),
         actualizar_Farmacia : actualizar_Farmacia,
         cargarCanales : cargarCanales,
-        cargarFarmacia_Por_Id : cargarFarmacia_Por_Id
+        cargarFarmacia_Por_Id : cargarFarmacia_Por_Id,
+        cargarFarmacia_AutoCompletar : cargarFarmacia_AutoCompletar
     };
     return farmacias;
 });
@@ -78,8 +79,7 @@ define(['global/vars'], function (global) {
 
         remoteDataSource.read();
         return remoteDataSource;
-    };  
-    
+    };
     function cargarFarmacia_Por_Id(global,Q,Azure_Mobile_Services,id){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
@@ -101,7 +101,6 @@ define(['global/vars'], function (global) {
 
         return deferred.promise;
     };
-
     function cargarCanales(global,Q,Azure_Mobile_Services){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
@@ -123,7 +122,6 @@ define(['global/vars'], function (global) {
 
         return deferred.promise;
     };
-
     function actualizar_Farmacia(global,Q,Azure_Mobile_Services,farmacia){
         // var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
@@ -145,4 +143,25 @@ define(['global/vars'], function (global) {
          });
 
         return deferred.promise;*/
+    };
+    function cargarFarmacia_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
+        var deferred = Q.defer();
+        var MobileServiceClient = WindowsAzure.MobileServiceClient;
+        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var todoItemTable = client.getTable('TP_Farmacia');
+
+        var query = todoItemTable
+        .read({ esprocedimiento: '1', buscador : '1', nombreBuscar: nombre  })
+         .done(function (results) {
+             if (results.length > 0) {
+                 deferred.resolve(results);
+             }
+             else {
+                 deferred.resolve(results);
+             }
+         }, function (err) {
+             deferred.reject(new Error("Error " + err));
+         });
+
+        return deferred.promise;
     };

@@ -53,6 +53,7 @@ define(
                         { url: 'ciclos', moduleId: 'viewmodels/ciclos', name: 'Ciclos', visible: false, settings: { area: 'Ciclos'} },
                         { url: 'panel', moduleId: 'viewmodels/panel', name: 'Panel', visible: false, settings: { area: 'Panel'} },
                         { url: 'editar_medico', moduleId: 'viewmodels/editar_medico', name: 'Editar Medico', visible: false, settings: { area: 'Medicos'} },
+                        { url: 'editar_farmacia', moduleId: 'viewmodels/editar_farmacia', name: 'Editar Farmacia', visible: false, settings: { area: 'Farmacia'} },
                         { url: 'planear', moduleId: 'viewmodels/planear', name: 'Planear', visible: false, settings: { area: 'Planear'} }
                     ];
 

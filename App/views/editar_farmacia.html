@@ -1,0 +1,59 @@
+
+<h2 data-bind="html:displayName"></h2>
+
+<section id="editarFarmacia">
+    
+     
+
+        <div><label for="nombre" class="required">Nombres</label><input id="nombre" class="k-textbox" type="text" data-bind="value: Farmacia_Entidad.Nombre" placeholder="Nombre" /></div>
+        
+        <div><label for="telefono">Telefono</label><input id="telefono" class="k-textbox" type="text"  data-bind="value: Farmacia_Entidad.Telefono" placeholder="Telefono" /></div>
+        
+        <div><label for="telefono2">Telefono 2</label><input type="text" id="telefono2" class="k-textbox" data-bind="value: Farmacia_Entidad.Telefono2" placeholder="Telefono 2" /></div>
+        
+        <div><label for="direccion">Direccion</label><input id="direccion" type="text" class="k-textbox"  data-bind="value: Farmacia_Entidad.Direccion" placeholder="Direccion" /></div>
+        
+        <div><label for="dropdown">Canal</label><span data-bind="text: Farmacia_Entidad.Canal_Descripcion"></span><select id="dropdown"></select></div>
+        
+        <div><label for="Departamento">Departamento</label><span data-bind="text: Farmacia_Entidad.Departamento"></span><select id="Departamento"></select></div>
+        
+        <div><label for="Ciudad">Ciudad</label><span data-bind="text: Farmacia_Entidad.Ciudad"></span><select id="Ciudad"></select></div>
+        
+        <div><label for="numero_registro">Numero Registro</label><input id="numero_registro" class="k-textbox" type="number" data-bind="value: Farmacia_Entidad.NumeroRegistro" placeholder="Celular"/></div>
+
+        
+        <div><label for="barrio">Barrio</label><input id="barrio" type="text" class="k-textbox" data-bind="value: Farmacia_Entidad.Barrio" placeholder="Barrio"/></div>
+
+        
+        <div><label for="no_dependientes">No Dependientes</label><input class="k-textbox" id="no_dependientes" type="number" data-bind="value: Farmacia_Entidad.NoDependientes" placeholder="Numero de dependientes"/></div>        
+        
+        <div><label for="no_distribuidores">No Distribuidores</label><input class="k-textbox" id="no_distribuidores" type="text" data-bind="value: Farmacia_Entidad.NoDistribuidores" placeholder="Numero de distribuidores"/></div>
+        
+        
+        <div><label for="despacho_domicidivo">Despacho a Domicidivo</label><input class="k-textbox" id="despacho_domicidivo" type="text" data-bind="value: Farmacia_Entidad.DespachoDomicidivo" placeholder="Despacho a domicidivo"/></div>       
+            
+        
+        <div><label for="apeldivdo_administrador">Apeldivdos Administrador</label><input class="k-textbox" id="apeldivdo_administrador" type="text" data-bind="value: Farmacia_Entidad.ApeldivdosAdministrador" placeholder="Apeldivdos administrador"/></div>       
+
+        
+        <div><label for="nombre_administrador">Nombres Administrador</label><input class="k-textbox" id="nombre_administrador" type="text" data-bind="value: Farmacia_Entidad.NombresAdministrador" placeholder="Nombres administrador"/></div>       
+
+        
+        <div ><label for="documento_administrador">Documento Administrador</label><input class="k-textbox" class="k-textbox" id="documento_administrador" type="text" data-bind="value: Farmacia_Entidad.DocumentoAdministrador" placeholder="Documento Administrador"/></div>       
+
+        
+        <div><label for="celular_administrador">Celular Administrador</label><input class="k-textbox" id="celular_administrador" type="text" data-bind="value: Farmacia_Entidad.CelularAdministrador" placeholder="Celular Administrador"/></div>
+
+        
+        <div><label for="email_administrador">Email Administrador</label><input class="k-textbox" id="email_administrador" type="text" data-bind="value: Farmacia_Entidad.EmailAdministrador" placeholder="Email Administrador"/></div>
+
+        
+        <div><label for="fecha_nacimiento_administrador">Fecha de nacimiento administrador</label><input class="k-textbox" id="fecha_nacimiento_administrador" type="date" data-bind="value: Farmacia_Entidad.FechaNacimientoAdministrador" placeholder="Fecha de nacimiento"/></div>       
+        
+
+    <div  class="accept">
+        <button id="Actualizar" class="k-button" type="submit">Guardar cambios</button>
+    </div>
+
+
+</section>
