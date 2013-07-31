@@ -87,7 +87,7 @@ define(['global/vars'], function (global) {
         var todoItemTable = client.getTable('TP_Farmacia');
 
         var query = todoItemTable
-        .read({ esprocedimiento: '1' })
+        .read({ esprocedimiento: '1', idFarmacia : id })
          .done(function (results) {
              if (results.length > 0) {
                  deferred.resolve(results);
