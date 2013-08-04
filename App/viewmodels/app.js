@@ -54,6 +54,8 @@ define(
                         { url: 'panel', moduleId: 'viewmodels/panel', name: 'Panel', visible: false, settings: { area: 'Panel'} },
                         { url: 'editar_medico', moduleId: 'viewmodels/editar_medico', name: 'Editar Medico', visible: false, settings: { area: 'Medicos'} },
                         { url: 'editar_farmacia', moduleId: 'viewmodels/editar_farmacia', name: 'Editar Farmacia', visible: false, settings: { area: 'Farmacia'} },
+                        { url: 'editar_usuario', moduleId: 'viewmodels/editar_usuario', name: 'Editar Usuario', visible: false, settings: { area: 'Usuario'} },
+                        { url: 'usuario', moduleId: 'viewmodels/usuario', name: 'Usuarios', visible: true, settings: { area: 'Usuario'} },
                         { url: 'planear', moduleId: 'viewmodels/planear', name: 'Planear', visible: false, settings: { area: 'Planear'} }
                     ];
 

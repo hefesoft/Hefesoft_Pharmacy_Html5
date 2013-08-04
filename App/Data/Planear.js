@@ -1,9 +1,10 @@
 
 
 define(['global/vars',"Util/Util","kendo"], 
-    function (global, util, kendo) {
+  function (global, util, kendo) {
     var planear = {        
-        DataSource : cargar_planear(global,util)
+        DataSource : cargar_planear(global,util),
+        cargarPlaneacion_Por_Usuario : cargarPlaneacion_Por_Usuario
     };
     return planear;
 });
@@ -74,8 +75,27 @@ define(['global/vars',"Util/Util","kendo"],
                     }
                 }
             }
-        });
-
-        remoteDataSource.read();
+        });        
         return remoteDataSource;
     };  
+  function cargarPlaneacion_Por_Usuario(global,Q,Azure_Mobile_Services,identificadorUsuario,identificadorCiclo){
+        var deferred = Q.defer();
+        var MobileServiceClient = WindowsAzure.MobileServiceClient;
+        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var todoItemTable = client.getTable('TM_Panel');
+
+        var query = todoItemTable
+        .read({ esprocedimiento: '1', planear : 1, idusuario : identificadorUsuario, idciclo: identificadorCiclo  })
+         .done(function (results) {
+             if (results.length > 0) {
+                 deferred.resolve(results);
+             }
+             else {
+                 deferred.resolve(results);
+             }
+         }, function (err) {
+             deferred.reject(new Error("Error " + err));
+         });
+
+        return deferred.promise;
+    };

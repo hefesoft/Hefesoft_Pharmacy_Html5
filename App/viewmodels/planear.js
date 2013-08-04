@@ -8,40 +8,61 @@ define([
 'durandal/system',
  'logger',
  'durandal/plugins/router',
- 'global/vars', 
- 'Data/Panel',
- 'Data/Planear'
+ 'global/vars'
  ],
- function (system, logger, router, global,dataContextPanel, dataContext) {
+ function (system, logger, router) {
 
      var planear = function () {
-         this.displayName = 'Planeacion';
+         this.displayName = 'Planear';
      };
 
      planear.prototype.viewAttached = function (view) {
 
-         var vm = kendo.observable({
-             displayName : 'Planeacion',
-             datasourcePanel : dataContextPanel.DataSource,
-             datasourcePlaneacion: dataContext.DataSource,
-             change: function(eventArgs) { 
-                var dataItem = eventArgs.sender.dataItem(eventArgs.sender.select());                         
-                dataContext.DataSource.add({
-                  IdPanel: dataItem.id,                  
-                  Nombre_Mostrar : dataItem.Nombre_Mostrar,                  
-                  Direccion_Mostrar : dataItem.Direccion_Mostrar,
-                  Tipo : dataItem.Tipo,
-                  Id_Unidad_Visita : dataItem.Id_Unidad_Visita
-               });
+         require(['Data/Planear', "Promesas/q.min", "MobileServices.Web-1.0.0.min"], function (dataPlaneacion, Q, Azure_Mobile_Services) {
+             dataContext = dataPlaneacion;
 
-               dataContext.DataSource.sync();
-               toastr.success('Agregado ' + dataItem.NombreMostrar);
-            }
-             
+             dataPlaneacion.cargarPlaneacion_Por_Usuario('', Q, Azure_Mobile_Services, '3CC9A845-92FA-40DA-BCBE-038ECCF7C4D4', '08E8BACD-169D-4CB0-AD87-9923CE2CF9C2').then(function (result) {
+                 if (result.length > 0) {
+                     cargarGrilla(result)
+                 }
+                 else {
+                     toastr.warning('Sin resultados');
+                 }
+             }, function (error) { toastr.warning(error); });
+
+         }
+         );
+
+     };
+
+     function cargarGrilla(dataSource) {
+
+         var vm = kendo.observable({
+
          });
 
-         kendo.bind($("#Contenedor"), vm);
-     }; 
+         kendo.bind($("#Planear"), vm);
 
+         var dataSourceMedicos = new kendo.data.DataSource({
+             data: dataSource
+         });
+
+         $("#List_View_Planear").kendoListView({
+             dataSource: dataSourceMedicos,
+             selectable: "single",
+             template: kendo.template($("#template").html()),
+             change: function (e) {
+                 e.preventDefault();                 
+                 var index = this.select().index(),
+                 dataItem = dataSourceMedicos.view()[index];                 
+             }
+         });
+
+         $('#buscador_medicos').keyup(function () {
+             var buscarPor = $('#buscador_medicos').val();
+             dataSourceMedicos.filter({ field: "Buscador", operator: "contains", value: buscarPor });
+         });
+     }
      return planear;
  });
+

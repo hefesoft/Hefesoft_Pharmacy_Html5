@@ -2,6 +2,70 @@
 <h2 data-bind="html:displayName"></h2>   
 
 <section id="Contenedor">
+     <div id="Planear">
+        <div>
+          <h4>Unidades de visita</h4>
+              <div id="List_View_Planear" class="contenedorMedico"></div>        
+        </div>
+         <div>
+            <input  id="buscador_medicos" class="span search-query" placeholder="Buscador unidad de visita" />
+        </div>  
+     </div>
+    </div>
+
+    <script type="text/x-kendo-tmpl" id="template">
+        <div class="medico">            
+                # if (Tipo == 'Medico'){ #  
+                <h3 class="label label-info"> #:Row# #:Nombres# #:Apellidos#</h3>
+                # } else if (Tipo == 'Farmacia'){ #
+                <h3 class="label label-warning"> #:Row# #:Nombres#</h3>
+                # } #
+                <div class="direccion">
+                    <p>#:Direccion#</p>
+                    <span class="label">#:ContactosActual#/#:ContactosOriginal#</span>
+                </div>        
+
+        </div>
+    </script>
+    <style>
+    .contenedorMedico{
+        overflow: auto;
+        height: 500px;
+        width: 30%;
+    
+     }
+    .medico {        
+                 
+    }
+    .medico:hover {
+            visibility: visible;           
+            top: 0;
+            margin: 0;
+            padding: 0;
+            line-height: 25px;
+            vertical-align: middle;
+            text-align: center;
+            color: #fff;
+            background-color: rgba(0,0,0,0.75);
+            transition: background .2s linear, color .2s linear;
+            -moz-transition: background .2s linear, color .2s linear;
+            -webkit-transition: background .2s linear, color .2s linear;
+            -o-transition: background .2s linear, color .2s linear;
+        }
+        .direccion
+        {
+             display: block;
+        }
+        
+        .direccion span
+        {
+           float: right;
+           margin-top: -4em;
+        }
+       </style>
+</section>    
+
+<!--<section id="Contenedor">
     <div id="Panel" class="box">
         <div class="Grillas"            
              id="Grid_Panel"
@@ -54,3 +118,7 @@
     position: relative;    
 }
 </style>
+
+
+-->
+

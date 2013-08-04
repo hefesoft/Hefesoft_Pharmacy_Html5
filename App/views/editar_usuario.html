@@ -1,0 +1,20 @@
+
+<h2 data-bind="html:displayName"></h2>
+
+<section id="editarUsuario">
+    
+        <div><label for="nombre" class="required">Nombres</label><input id="nombre" class="k-textbox" type="text" data-bind="value: Usuario_Entidad.Nombres" placeholder="Nombres" /></div>
+        <div><label for="apellidos" class="required">Apellidos</label><input id="apellidos" class="k-textbox" type="text" data-bind="value: Usuario_Entidad.Apellidos" placeholder="Apellidos" /></div>
+        <div><label for="numero_documento" class="required">Numero documento</label><input id="numero_documento" class="k-textbox" type="text" data-bind="value: Usuario_Entidad.Numero_Documento" placeholder="Numero documento" /></div>
+        <div><label for="Telefono" class="required">Telefono</label><input id="Telefono" class="k-textbox" type="text" data-bind="value: Usuario_Entidad.Telefono" placeholder="Telefono" /></div>
+        <div><label for="Celular" class="required">Celular</label><input id="Celular" class="k-textbox" type="text" data-bind="value: Usuario_Entidad.Celular" placeholder="Celular" /></div>
+        <div><label for="Correo_Electronico" class="required">Correo Electronico</label><input id="Correo_Electronico" class="k-textbox" type="text" data-bind="value: Usuario_Entidad.Correo_Electronico" placeholder="Correo Electronico" /></div>
+        <div><label for="Clave" class="required">Clave</label><input id="Clave" class="k-textbox" type="text" data-bind="value: Usuario_Entidad.Clave" placeholder="Clave" /></div>
+        <div><label for="Activo" class="required"><input type="checkbox" data-bind="checked: Usuario_Entidad.Activo" /> Activo en el sistema</label></div>
+
+    <div  class="accept">
+        <button id="Actualizar" class="k-button" type="submit">Guardar cambios</button>
+    </div>
+
+
+</section>
