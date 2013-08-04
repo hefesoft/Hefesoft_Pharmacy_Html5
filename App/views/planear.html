@@ -1,17 +1,23 @@
 
 <h2 data-bind="html:displayName"></h2>   
 
-<section id="Contenedor">
-     <div id="Planear">
+<section class="clearfix" id="Contenedor">
+ 
+ <div class="row">
+     <div class="span7">
+        <div id="Planear">
         <div>
-          <h4>Unidades de visita</h4>
+          <h5>Unidades de visita</h5>            
+              <div><input  id="buscador_medicos" class="span search-query" placeholder="Buscador unidad de visita" /></div> 
+              </br>
               <div id="List_View_Planear" class="contenedorMedico"></div>        
-        </div>
-         <div>
-            <input  id="buscador_medicos" class="span search-query" placeholder="Buscador unidad de visita" />
-        </div>  
+        </div>          
      </div>
-    </div>
+     </div>
+     <div class="span8">
+        <div id="scheduler"></div>
+     </div>
+ </div>
 
     <script type="text/x-kendo-tmpl" id="template">
         <div class="medico">            
@@ -27,12 +33,19 @@
 
         </div>
     </script>
-    <style>
-    .contenedorMedico{
-        overflow: auto;
-        height: 500px;
-        width: 30%;
-    
+   
+     <style>        
+         
+    #Planear
+     {
+            overflow: auto;
+            height: 500px;
+     }
+     
+     #scheduler
+     {
+            overflow: auto;
+            height: 500px;
      }
     .medico {        
                  
@@ -62,7 +75,7 @@
            float: right;
            margin-top: -4em;
         }
-       </style>
+     </style>
 </section>    
 
 <!--<section id="Contenedor">

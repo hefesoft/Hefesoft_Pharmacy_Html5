@@ -54,7 +54,11 @@ define([
              change: function (e) {
                  e.preventDefault();                 
                  var index = this.select().index(),
-                 dataItem = dataSourceMedicos.view()[index];                 
+                 dataItem = dataSourceMedicos.view()[index];
+
+                 
+                 var scheduler = $("#scheduler").data("kendoScheduler");
+                 scheduler.addEvent({ title: dataItem.Nombres + ' ' + dataItem.Apellidos });
              }
          });
 
@@ -62,6 +66,15 @@ define([
              var buscarPor = $('#buscador_medicos').val();
              dataSourceMedicos.filter({ field: "Buscador", operator: "contains", value: buscarPor });
          });
+
+         $("#scheduler").kendoScheduler({
+          date: new Date(moment().format('YYYY/MM/DD')),
+          views: [            
+            { type: "agenda", selected: true },            
+            "day"
+          ],
+          dataSource: []
+        });
      }
      return planear;
  });
