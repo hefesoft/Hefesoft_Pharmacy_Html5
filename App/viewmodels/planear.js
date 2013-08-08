@@ -52,13 +52,21 @@ define([
              selectable: "single",
              template: kendo.template($("#template").html()),
              change: function (e) {
-                 e.preventDefault();                 
+                 e.preventDefault();
                  var index = this.select().index(),
                  dataItem = dataSourceMedicos.view()[index];
 
-                 
-                 var scheduler = $("#scheduler").data("kendoScheduler");
-                 scheduler.addEvent({ title: dataItem.Nombres + ' ' + dataItem.Apellidos });
+                 var dia = moment().format('d');
+
+
+                 if (dia == 6 || dia == 7) {
+                     alert('Dia no habilitado para planear');
+                     toastr.warning('Dia no permitido para planear');
+                 }
+                 else {
+                     var scheduler = $("#scheduler").data("kendoScheduler");
+                     scheduler.addEvent({ title: dataItem.Nombres + ' ' + dataItem.Apellidos });
+                 }
              }
          });
 
@@ -68,13 +76,24 @@ define([
          });
 
          $("#scheduler").kendoScheduler({
-          date: new Date(moment().format('YYYY/MM/DD')),
-          views: [            
-            { type: "agenda", selected: true },            
+             date: new Date(moment().format('YYYY/MM/DD')),
+             timezone: "America/Bogota",
+             views: [
+            { type: "agenda", selected: true },
             "day"
           ],
-          dataSource: []
-        });
+             dataSource: [],
+             resources: [
+            {
+                field: "tipoId",
+                title: "Tipo planeacion",
+                dataSource: [
+                { text: "No planeada", value: 1 },
+                { text: "Actividad justificada", value: 2 }
+              ]
+            }
+          ]
+         });
      }
      return planear;
  });
