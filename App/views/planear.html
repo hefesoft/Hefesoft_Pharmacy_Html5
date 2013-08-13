@@ -3,22 +3,24 @@
 
 <section class="clearfix" id="Contenedor">
  
- <div class="row">
-     <div class="span7">
-        <div id="Planear">
-        <div>
-          <h5>Unidades de visita</h5>            
-              <div><input  id="buscador_medicos" class="span search-query" placeholder="Buscador unidad de visita" /></div> 
-              </br>
-              <div id="List_View_Planear" class="contenedorMedico"></div>        
-        </div>          
-     </div>
-     </div>
-     <div class="span8">
-        <div id="scheduler"></div>
-     </div>
- </div>
+    <div class="container-fluid">
+         <div class="row-fluid">
+             <div class="span6">
+                <div id="Planear">
+                <div>
+                  <h5>Unidades de visita</h5>            
+                      <div><input  id="buscador_medicos" class="span search-query" placeholder="Buscador unidad de visita" /></div> 
+                      </br>
+                      <div id="List_View_Planear" class="contenedorMedico"></div>        
+                </div>          
+             </div>
+             </div>
 
+             <div class="span6">
+                <div id="scheduler"></div>
+             </div>
+ </div>
+    </div>
     <script type="text/x-kendo-tmpl" id="template">
         <div class="medico">            
                 # if (Tipo == 'Medico'){ #  
