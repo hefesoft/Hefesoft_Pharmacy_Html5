@@ -13,7 +13,7 @@ define(['durandal/system', 'logger', 'durandal/plugins/router','global/vars'],
         this.ingresarSistema = ingresarSistema;
         this.displayName = 'Hefesoft Pharmacy';
         this.description = 'Por favor ingrese al sitema con alguna de las siguientes opciones.';
-        client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');      
+        client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', global.Azure_key);      
     };
 
     login.prototype.viewAttached = function (view) {

@@ -11,7 +11,7 @@ define(['global/vars',"Util/Util","kendo"],
                     dataType: "json",
                     type: "GET",
                     beforeSend: function (req) {
-                        req.setRequestHeader('x-zumo-application', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');                        
+                        req.setRequestHeader('x-zumo-application', global.Azure_key);                        
                     }
                 },
                 create: {
@@ -23,7 +23,7 @@ define(['global/vars',"Util/Util","kendo"],
                     dataType: "json",
                     type: "POST",
                     beforeSend: function (req) {
-                        req.setRequestHeader('x-zumo-application', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');                        
+                        req.setRequestHeader('x-zumo-application', global.Azure_key);                        
                     }
                 },
                 update: {
@@ -37,7 +37,7 @@ define(['global/vars',"Util/Util","kendo"],
                     dataType: "json",
                     type: "PATCH",
                     beforeSend: function (req) {
-                        req.setRequestHeader('x-zumo-application', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');                        
+                        req.setRequestHeader('x-zumo-application', global.Azure_key);                        
                     }
                 },
                 destroy: {
@@ -47,7 +47,7 @@ define(['global/vars',"Util/Util","kendo"],
                     dataType: "json",
                     type: "DELETE",
                     beforeSend: function (req) {
-                        req.setRequestHeader('x-zumo-application', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');                        
+                        req.setRequestHeader('x-zumo-application', global.Azure_key);                        
                     }
                 }
             },

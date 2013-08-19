@@ -21,7 +21,7 @@ function (global, dataContextMedicos, validaciones, util) {
                     dataType: "json",
                     type: "GET",
                     beforeSend: function (req) {
-                        req.setRequestHeader('x-zumo-application', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+                        req.setRequestHeader('x-zumo-application', global.Azure_key);
                         req.setRequestHeader('x-zumo-auth', global.token);
                     }
                 },
@@ -34,7 +34,7 @@ function (global, dataContextMedicos, validaciones, util) {
                     dataType: "json",
                     type: "POST",
                     beforeSend: function (req) {
-                        req.setRequestHeader('x-zumo-application', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+                        req.setRequestHeader('x-zumo-application', global.Azure_key);
                         req.setRequestHeader('x-zumo-auth', global.token);
                     }
                 },
@@ -49,7 +49,7 @@ function (global, dataContextMedicos, validaciones, util) {
                     dataType: "json",
                     type: "PATCH",
                     beforeSend: function (req) {
-                        req.setRequestHeader('x-zumo-application', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+                        req.setRequestHeader('x-zumo-application', global.Azure_key);
                         req.setRequestHeader('x-zumo-auth', global.token);
                     }
                 },
@@ -60,7 +60,7 @@ function (global, dataContextMedicos, validaciones, util) {
                     dataType: "json",
                     type: "DELETE",
                     beforeSend: function (req) {
-                        req.setRequestHeader('x-zumo-application', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+                        req.setRequestHeader('x-zumo-application', global.Azure_key);
                         req.setRequestHeader('x-zumo-auth', global.token);
                     }
                 }
