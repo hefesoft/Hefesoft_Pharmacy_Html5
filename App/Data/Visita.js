@@ -5,7 +5,7 @@ define(
 'durandal/plugins/router'
 ], function (global, Q, router) {
    
-    function AgregarVisita(global, Q, Azure_Mobile_Services, visita) {
+    function AgregarVisita(Q, Azure_Mobile_Services, visita) {
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -25,7 +25,7 @@ define(
         return deferred.promise;
     };
 
-    function EliminarVisita(global, Q, Azure_Mobile_Services, idEliminar) {
+    function EliminarVisita(Q, Azure_Mobile_Services, idEliminar) {
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -33,7 +33,7 @@ define(
         todoItemTable.del({ id: idEliminar });
     }
 
-    function SumarContacto(global, id, numeroContactos) {
+    function SumarContacto(id, numeroContactos) {
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TM_Panel');
@@ -44,7 +44,7 @@ define(
         });        
     };
 
-    function cargarVisitas(global,Q,Azure_Mobile_Services,id_Usuario){
+    function cargarVisitas(Q,Azure_Mobile_Services,id_Usuario){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);

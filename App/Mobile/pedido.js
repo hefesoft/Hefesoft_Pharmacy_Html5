@@ -68,7 +68,7 @@ define([
                  if (myLength >= 2) {
                      require(['Data/Producto'], function (dataProductos) {
                          var buscarPor = $('#buscador_producto').val();
-                         dataProductos.cargarProducto_AutoCompletar('', Q, Azure_Mobile_Services, buscarPor).then(function (result) {
+                         dataProductos.cargarProducto_AutoCompletar( Q, Azure_Mobile_Services, buscarPor).then(function (result) {
                              if (result.length > 0) {
                                  $('#listado_productos').kendoMobileListView(
                                  {

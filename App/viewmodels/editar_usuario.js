@@ -23,7 +23,7 @@ define([
          require(['Data/Autenticacion'], function (data) {
 
              dataContext = data;
-             dataContext.cargarUsuario_Por_Id('', Q, Azure_Mobile_Services, codigoUsuario).then(function (result) {
+             dataContext.cargarUsuario_Por_Id( Q, Azure_Mobile_Services, codigoUsuario).then(function (result) {
                  if (result.length > 0) {
                      uiCargarDatosUsuario(result[0]);
                  }
@@ -40,7 +40,7 @@ define([
              $('#Actualizar').click(function () {
                  var Usuario = viewModel.Usuario_Entidad;                 
                  util.eliminarPropiedadesNoDefinidas(Usuario);
-                 dataContext.actualizar_Usuario('', Q, Azure_Mobile_Services, Usuario);
+                 dataContext.actualizar_Usuario( Q, Azure_Mobile_Services, Usuario);
              });     
      }
 

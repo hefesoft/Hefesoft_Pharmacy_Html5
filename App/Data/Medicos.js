@@ -8,7 +8,7 @@ define(
 ,
 function (global, Q, Azure_Mobile_Services, Kendo) {
     
-        function cargar_Tipos_Documentos(global) {
+        function cargar_Tipos_Documentos() {
         this.remoteDataSourceEspecialidades = new kendo.data.DataSource({
             transport: {
                 read: {
@@ -35,7 +35,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
         remoteDataSourceEspecialidades.read();
         return remoteDataSourceEspecialidades;
     };
-    function cargar_Medicos(global) {
+    function cargar_Medicos() {
         this.remoteDataSource = new kendo.data.DataSource({
             transport: {
                 read: {
@@ -109,7 +109,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
         });       
         return remoteDataSource;
     };      
-    function cargarEspecialidades(global,Q,Azure_Mobile_Services){      
+    function cargarEspecialidades(Q,Azure_Mobile_Services){      
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -129,7 +129,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
 
         return deferred.promise;
     };
-    function cargarMedico_Por_Id(global,Q,Azure_Mobile_Services,id){
+    function cargarMedico_Por_Id(Q,Azure_Mobile_Services,id){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -150,7 +150,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
 
         return deferred.promise;
     };
-    function actualizar_Medico(global,Q,Azure_Mobile_Services,medico){
+    function actualizar_Medico(Q,Azure_Mobile_Services,medico){
         // var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -172,7 +172,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
 
         return deferred.promise;*/
     };
-    function cargarMedico_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
+    function cargarMedico_AutoCompletar(Q,Azure_Mobile_Services,nombre){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -195,8 +195,8 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
     };
     
     var medicos = {
-        Tp_Tipo_Documento: cargar_Tipos_Documentos(global),
-        Listado_Medicos : cargar_Medicos(global),
+        Tp_Tipo_Documento: cargar_Tipos_Documentos,
+        Listado_Medicos : cargar_Medicos,
         cargarEspecialidades : cargarEspecialidades,
         cargarMedico_Por_Id : cargarMedico_Por_Id,
         actualizar_Medico : actualizar_Medico,

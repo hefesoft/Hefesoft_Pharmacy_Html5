@@ -18,7 +18,7 @@ define([
              require(['Data/Farmacias'], function (data) {
 
                  dataContext = data;
-                 dataContext.cargarCanales('', Q, Azure_Mobile_Services).then(function (result) {
+                 dataContext.cargarCanales( Q, Azure_Mobile_Services).then(function (result) {
                      if (result.length > 0) {
                          ui_Cargar_Canales(result);
                      }
@@ -26,7 +26,7 @@ define([
                          toastr.warning('Especialidades no cargadas');
                      }
                  }, function (error) { toastr.warning(error); });
-                 zonas_Geograficas.cargarDepartamentos('', Q, Azure_Mobile_Services).then(function (result) {
+                 zonas_Geograficas.cargarDepartamentos( Q, Azure_Mobile_Services).then(function (result) {
                      if (result.length > 0) {
                          ui_Cargar_Departamentos(result);
                      }
@@ -35,7 +35,7 @@ define([
                      }
                  }, function (error) { toastr.warning(error); });
                  
-                 dataContext.cargarFarmacia_Por_Id('', Q, Azure_Mobile_Services, app.vars.temp.idFarmacia).then(function (result) {
+                 dataContext.cargarFarmacia_Por_Id( Q, Azure_Mobile_Services, app.vars.temp.idFarmacia).then(function (result) {
                      if (result.length > 0) {
                          uiCargarDatosFarmacia(result[0]);
                      }
@@ -50,7 +50,7 @@ define([
                          farmacia.FechaNacimientoAdministrador = moment(farmacia.FechaNacimientoAdministrador).format('MM/DD/YYYY');
                      }
                      util.eliminarPropiedadesNoDefinidas(farmacia);
-                     dataContext.actualizar_Farmacia('', Q, Azure_Mobile_Services, farmacia);
+                     dataContext.actualizar_Farmacia( Q, Azure_Mobile_Services, farmacia);
 
                      viewModel.Layout.set("Read", "inherit");
                      viewModel.Layout.set("Edit", "none");
@@ -178,7 +178,7 @@ define([
      function onSelectDepartamento(e) {
          var dataItem = this.dataItem(e.item.index());
          var codigo = dataItem.Codigo;
-         zonas_Geograficas.cargarCiudades('', Q, Azure_Mobile_Services, codigo).then(function (result) {
+         zonas_Geograficas.cargarCiudades( Q, Azure_Mobile_Services, codigo).then(function (result) {
              if (result.length > 0) {
                  ui_Cargar_Ciudad(result);
              }

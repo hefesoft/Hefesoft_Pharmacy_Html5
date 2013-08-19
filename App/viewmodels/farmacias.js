@@ -23,7 +23,7 @@ define([
              $("#buscar").click(function () { 
 
              var buscarPor = $('#buscador_farmacias').val();
-             dataFarmacias.cargarFarmacia_AutoCompletar('', Q, Azure_Mobile_Services, buscarPor).then(function (result) {
+             dataFarmacias.cargarFarmacia_AutoCompletar( Q, Azure_Mobile_Services, buscarPor).then(function (result) {
                  if (result.length > 0) {
                      cargarGrilla(result)
                  }

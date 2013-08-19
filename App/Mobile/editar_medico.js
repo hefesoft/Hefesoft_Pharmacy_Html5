@@ -13,7 +13,7 @@ define([
      var viewModel = {
          loaded: function loaded() {
 
-             dataContext.cargarEspecialidades('', Q, Azure_Mobile_Services).then(function (result) {
+             dataContext.cargarEspecialidades( Q, Azure_Mobile_Services).then(function (result) {
                  if (result.length > 0) {
                      ui_Cargar_Especialidades(result);
                  }
@@ -21,7 +21,7 @@ define([
                      toastr.warning('Especialidades no cargadas');
                  }
              }, function (error) { toastr.warning(error); });
-             zonas_Geograficas.cargarDepartamentos('', Q, Azure_Mobile_Services).then(function (result) {
+             zonas_Geograficas.cargarDepartamentos( Q, Azure_Mobile_Services).then(function (result) {
                  if (result.length > 0) {
                      ui_Cargar_Departamentos(result);
                  }
@@ -29,7 +29,7 @@ define([
                      toastr.warning('Error cargando departamentos');
                  }
              }, function (error) { toastr.warning(error); });
-             dataContext.cargarMedico_Por_Id('', Q, Azure_Mobile_Services, app.vars.temp.idMedico).then(function (result) {
+             dataContext.cargarMedico_Por_Id( Q, Azure_Mobile_Services, app.vars.temp.idMedico).then(function (result) {
                  if (result.length > 0) {
                      uiCargarDatosMedicos(result[0]);
                  }
@@ -42,7 +42,7 @@ define([
                  var medico = viewModel.Medico_Entidad;
                  medico.FechaNacimiento = moment(medico.FechaNacimiento).format('MM/DD/YYYY');
                  util.eliminarPropiedadesNoDefinidas(medico);
-                 dataContext.actualizar_Medico('', Q, Azure_Mobile_Services, medico);                 
+                 dataContext.actualizar_Medico( Q, Azure_Mobile_Services, medico);                 
 
                  viewModel.Layout.set("Read", "inherit");
                  viewModel.Layout.set("Edit", "none");
@@ -149,7 +149,7 @@ define([
      function onSelectDepartamento(e) {
          var dataItem = this.dataItem(e.item.index());
          var codigo = dataItem.Codigo;
-         zonas_Geograficas.cargarCiudades('', Q, Azure_Mobile_Services, codigo).then(function (result) {
+         zonas_Geograficas.cargarCiudades( Q, Azure_Mobile_Services, codigo).then(function (result) {
              if (result.length > 0) {
                  ui_Cargar_Ciudad(result);
              }

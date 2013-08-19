@@ -8,7 +8,7 @@ define(
 ,
 function (global, Q, Azure_Mobile_Services, Kendo) {
     
-    function cargarProducto_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
+    function cargarProducto_AutoCompletar(Q,Azure_Mobile_Services,nombre){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);

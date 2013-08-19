@@ -23,7 +23,7 @@ define([
              $("#buscar").click(function () { 
 
              var buscarPor = $('#buscador_medicos').val();
-             dataMedicos.cargarMedico_AutoCompletar('', Q, Azure_Mobile_Services, buscarPor).then(function (result) {
+             dataMedicos.cargarMedico_AutoCompletar(Q, Azure_Mobile_Services, buscarPor).then(function (result) {
                  if (result.length > 0) {
                      cargarGrilla(result)
                  }

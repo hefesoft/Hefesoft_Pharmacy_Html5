@@ -41,7 +41,7 @@ define([
              dataContext = dataPlaneacion;
              VisitaDataContext = dataVisita;
 
-             dataPlaneacion.cargarPlaneacion_Por_Usuario('', Q, Azure_Mobile_Services, Global_Vars.id_Usuario_antiguo, Global_Vars.ciclo_Antiguo).then(function (result) {
+             dataPlaneacion.cargarPlaneacion_Por_Usuario( Q, Azure_Mobile_Services, Global_Vars.id_Usuario_antiguo, Global_Vars.ciclo_Antiguo).then(function (result) {
                  if (result.length > 0) {
                      cargarGrilla(result)
                  }
@@ -162,12 +162,12 @@ define([
                      visita.Actividad_Justificada = true;
                  }
 
-                 VisitaDataContext.AgregarVisita('', Global_Q, Global_Azure_Mobile_Services, visita).then(function (result) {
+                 VisitaDataContext.AgregarVisita( Global_Q, Global_Azure_Mobile_Services, visita).then(function (result) {
                      dataSourceSheduler.actualizar({ keyField: 'title', keyValue: e.model.title, updateField: 'identificadorHefesoftPharmacy', updateValue: result.id });
                      dataSourceSheduler.actualizar({ keyField: 'title', keyValue: e.model.title, updateField: 'IdPanel', updateValue: elementoSeleccionado.id });
 
                      // Sumar un contacto                     
-                     VisitaDataContext.SumarContacto('', elementoSeleccionado.id, elementoSeleccionado.ContactosActual + 1);
+                     VisitaDataContext.SumarContacto( elementoSeleccionado.id, elementoSeleccionado.ContactosActual + 1);
 
                      //Actualizar el listView
                      dataSourceMedicos.updateField({ keyField: 'id', keyValue: elementoSeleccionado.id, updateField: 'ContactosActual', updateValue: elementoSeleccionado.ContactosActual + 1 });
@@ -177,17 +177,17 @@ define([
              },
              remove: function (e) {
                  console.log("Removing", e.event.identificadorHefesoftPharmacy);
-                 VisitaDataContext.EliminarVisita('', Global_Q, Global_Azure_Mobile_Services, e.event.identificadorHefesoftPharmacy);
+                 VisitaDataContext.EliminarVisita( Global_Q, Global_Azure_Mobile_Services, e.event.identificadorHefesoftPharmacy);
 
                  elementoSeleccionado = dataSourceMedicos.getByField({ keyField: 'id', keyValue: e.event.IdPanel });
 
-                 VisitaDataContext.SumarContacto('', e.event.IdPanel, elementoSeleccionado.ContactosActual - 1);
+                 VisitaDataContext.SumarContacto( e.event.IdPanel, elementoSeleccionado.ContactosActual - 1);
                  dataSourceMedicos.updateField({ keyField: 'id', keyValue: e.event.IdPanel, updateField: 'ContactosActual', updateValue: elementoSeleccionado.ContactosActual - 1 });
 
              }
          });
 
-         VisitaDataContext.cargarVisitas('', Global_Q, Global_Azure_Mobile_Services, 2).then(function (result) {
+         VisitaDataContext.cargarVisitas( Global_Q, Global_Azure_Mobile_Services, 2).then(function (result) {
              if (result.length > 0) {
 
                  $.each(result, function (idx, record) {

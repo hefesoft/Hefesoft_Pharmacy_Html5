@@ -71,7 +71,7 @@ define(['global/vars'], function (global) {
         remoteDataSource.read();
         return remoteDataSource;
     };
-    function cargarFarmacia_Por_Id(global,Q,Azure_Mobile_Services,id){
+    function cargarFarmacia_Por_Id(Q,Azure_Mobile_Services,id){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -92,7 +92,7 @@ define(['global/vars'], function (global) {
 
         return deferred.promise;
     };
-    function cargarCanales(global,Q,Azure_Mobile_Services){
+    function cargarCanales(Q,Azure_Mobile_Services){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -113,7 +113,7 @@ define(['global/vars'], function (global) {
 
         return deferred.promise;
     };
-    function actualizar_Farmacia(global,Q,Azure_Mobile_Services,farmacia){
+    function actualizar_Farmacia(Q,Azure_Mobile_Services,farmacia){
         // var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -135,7 +135,7 @@ define(['global/vars'], function (global) {
 
         return deferred.promise;*/
     };
-    function cargarFarmacia_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
+    function cargarFarmacia_AutoCompletar(Q,Azure_Mobile_Services,nombre){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);

@@ -81,7 +81,7 @@ define(
 
         return deferred.promise;
 };
-    function cargarUsuarios_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
+    function cargarUsuarios_AutoCompletar(Q,Azure_Mobile_Services,nombre){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -102,7 +102,7 @@ define(
 
         return deferred.promise;
     };
-    function cargarUsuario_Por_Id(global,Q,Azure_Mobile_Services,id){
+    function cargarUsuario_Por_Id(Q,Azure_Mobile_Services,id){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -123,7 +123,7 @@ define(
 
         return deferred.promise;
     };
-    function actualizar_Usuario(global,Q,Azure_Mobile_Services,usuario){
+    function actualizar_Usuario(Q,Azure_Mobile_Services,usuario){
         // var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
