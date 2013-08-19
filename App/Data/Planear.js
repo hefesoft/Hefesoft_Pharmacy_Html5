@@ -3,7 +3,7 @@
 define(['global/vars',"Util/Util","kendo"], 
   function (global, util, kendo) {
  
-    function cargar_planear(global,util) {
+    function cargar_planear() {
         this.remoteDataSource = new kendo.data.DataSource({
             transport: {
                 read: {
@@ -72,7 +72,7 @@ define(['global/vars',"Util/Util","kendo"],
         });        
         return remoteDataSource;
     };  
-    function cargarPlaneacion_Por_Usuario(global,Q,Azure_Mobile_Services,identificadorUsuario,identificadorCiclo){
+    function cargarPlaneacion_Por_Usuario(Q,Azure_Mobile_Services,identificadorUsuario,identificadorCiclo){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -95,7 +95,7 @@ define(['global/vars',"Util/Util","kendo"],
     };
  
     var planear = {        
-        DataSource : cargar_planear(global,util),
+        DataSource : cargar_planear(),
         cargarPlaneacion_Por_Usuario : cargarPlaneacion_Por_Usuario
     };
     return planear;
