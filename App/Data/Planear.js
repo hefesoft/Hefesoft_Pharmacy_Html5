@@ -2,14 +2,8 @@
 
 define(['global/vars',"Util/Util","kendo"], 
   function (global, util, kendo) {
-    var planear = {        
-        DataSource : cargar_planear(global,util),
-        cargarPlaneacion_Por_Usuario : cargarPlaneacion_Por_Usuario
-    };
-    return planear;
-});
-  
-  function cargar_planear(global,util) {
+ 
+    function cargar_planear(global,util) {
         this.remoteDataSource = new kendo.data.DataSource({
             transport: {
                 read: {
@@ -78,10 +72,10 @@ define(['global/vars',"Util/Util","kendo"],
         });        
         return remoteDataSource;
     };  
-  function cargarPlaneacion_Por_Usuario(global,Q,Azure_Mobile_Services,identificadorUsuario,identificadorCiclo){
+    function cargarPlaneacion_Por_Usuario(global,Q,Azure_Mobile_Services,identificadorUsuario,identificadorCiclo){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TM_Panel');
 
         var query = todoItemTable
@@ -99,3 +93,12 @@ define(['global/vars',"Util/Util","kendo"],
 
         return deferred.promise;
     };
+ 
+    var planear = {        
+        DataSource : cargar_planear(global,util),
+        cargarPlaneacion_Por_Usuario : cargarPlaneacion_Por_Usuario
+    };
+    return planear;
+});
+  
+ 

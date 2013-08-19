@@ -1,14 +1,5 @@
 define(['global/vars'], function (global) {
-    var farmacias = {        
-        Listado_Farmacias : cargar_TP_Farmacias(global),
-        actualizar_Farmacia : actualizar_Farmacia,
-        cargarCanales : cargarCanales,
-        cargarFarmacia_Por_Id : cargarFarmacia_Por_Id,
-        cargarFarmacia_AutoCompletar : cargarFarmacia_AutoCompletar
-    };
-    return farmacias;
-});
-  
+    
     function cargar_TP_Farmacias(global) {
         this.remoteDataSource = new kendo.data.DataSource({
             transport: {
@@ -83,7 +74,7 @@ define(['global/vars'], function (global) {
     function cargarFarmacia_Por_Id(global,Q,Azure_Mobile_Services,id){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Farmacia');
 
         var query = todoItemTable
@@ -104,7 +95,7 @@ define(['global/vars'], function (global) {
     function cargarCanales(global,Q,Azure_Mobile_Services){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Canal');
 
         var query = todoItemTable
@@ -125,7 +116,7 @@ define(['global/vars'], function (global) {
     function actualizar_Farmacia(global,Q,Azure_Mobile_Services,farmacia){
         // var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_farmacia');
 
         todoItemTable.update(farmacia);
@@ -147,7 +138,7 @@ define(['global/vars'], function (global) {
     function cargarFarmacia_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Farmacia');
 
         var query = todoItemTable
@@ -165,3 +156,17 @@ define(['global/vars'], function (global) {
 
         return deferred.promise;
     };
+    
+    
+    var farmacias = {        
+        Listado_Farmacias : cargar_TP_Farmacias(global),
+        actualizar_Farmacia : actualizar_Farmacia,
+        cargarCanales : cargarCanales,
+        cargarFarmacia_Por_Id : cargarFarmacia_Por_Id,
+        cargarFarmacia_AutoCompletar : cargarFarmacia_AutoCompletar
+    };
+
+
+    return farmacias;
+});
+  

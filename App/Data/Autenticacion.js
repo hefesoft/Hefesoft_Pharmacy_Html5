@@ -18,7 +18,7 @@ define(
     var deferred = Q.defer();
 
     var MobileServiceClient = WindowsAzure.MobileServiceClient;
-    var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+    var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
     var todoItemTable = client.getTable('TP_Usuario');
 
     var query = todoItemTable.where({
@@ -30,7 +30,8 @@ define(
 
         global.id_Usuario = results[0].id;
         global.id_Usuario_antiguo = results[0].Id_Antiguo;
-
+        
+        // Va a el Data y Carga el ciclo actual
         ciclos.cargarCicloActivo();
 
         // Aca poner logica de perfiles
@@ -83,7 +84,7 @@ define(
     function cargarUsuarios_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Usuario');
 
         var query = todoItemTable
@@ -104,7 +105,7 @@ define(
     function cargarUsuario_Por_Id(global,Q,Azure_Mobile_Services,id){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Usuario');
 
         var query = todoItemTable
@@ -125,7 +126,7 @@ define(
     function actualizar_Usuario(global,Q,Azure_Mobile_Services,usuario){
         // var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Usuario');
 
         todoItemTable.update(usuario);

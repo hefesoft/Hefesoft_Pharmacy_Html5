@@ -7,17 +7,11 @@ define(
 ]
 ,
 function (global, Q, Azure_Mobile_Services, Kendo) {
-    var producto = {
-        cargarProducto_AutoCompletar : cargarProducto_AutoCompletar
-    };
-    return producto;
-});
-  
-
+    
     function cargarProducto_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Producto');
 
         var query = todoItemTable
@@ -35,3 +29,13 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
 
         return deferred.promise;
     };
+
+    var producto = {
+        cargarProducto_AutoCompletar : cargarProducto_AutoCompletar
+    };
+    
+    return producto;
+});
+  
+
+    

@@ -1,11 +1,6 @@
 define(['global/vars'], function (global) {
-    var usuario = {        
-        DataSource : cargar_TP_Usuarios(global)
-    };
-    return usuario;
-});
-  
- function cargar_TP_Usuarios(global) {
+    
+    function cargar_TP_Usuarios(global) {
         this.remoteDataSource = new kendo.data.DataSource({
             transport: {
                 read: {
@@ -73,3 +68,12 @@ define(['global/vars'], function (global) {
         remoteDataSource.read();
         return remoteDataSource;
     };  
+
+    var usuario = {        
+        DataSource : cargar_TP_Usuarios(global)
+    };
+
+    return usuario;
+});
+  
+ 

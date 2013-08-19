@@ -7,18 +7,8 @@ define(
 ]
 ,
 function (global, Q, Azure_Mobile_Services, Kendo) {
-    var medicos = {
-        Tp_Tipo_Documento: cargar_Tipos_Documentos(global),
-        Listado_Medicos : cargar_Medicos(global),
-        cargarEspecialidades : cargarEspecialidades,
-        cargarMedico_Por_Id : cargarMedico_Por_Id,
-        actualizar_Medico : actualizar_Medico,
-        cargarMedico_AutoCompletar : cargarMedico_AutoCompletar
-    };
-    return medicos;
-});
-  
-    function cargar_Tipos_Documentos(global) {
+    
+        function cargar_Tipos_Documentos(global) {
         this.remoteDataSourceEspecialidades = new kendo.data.DataSource({
             transport: {
                 read: {
@@ -122,7 +112,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
     function cargarEspecialidades(global,Q,Azure_Mobile_Services){      
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Especialidades');
 
          var query = todoItemTable.take(200).orderBy("Descripcion").read()
@@ -142,7 +132,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
     function cargarMedico_Por_Id(global,Q,Azure_Mobile_Services,id){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Medico');
 
         var query = todoItemTable
@@ -163,7 +153,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
     function actualizar_Medico(global,Q,Azure_Mobile_Services,medico){
         // var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Medico');
 
         todoItemTable.update(medico);
@@ -185,7 +175,7 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
     function cargarMedico_AutoCompletar(global,Q,Azure_Mobile_Services,nombre){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Medico');
 
         var query = todoItemTable
@@ -203,3 +193,17 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
 
         return deferred.promise;
     };
+    
+    var medicos = {
+        Tp_Tipo_Documento: cargar_Tipos_Documentos(global),
+        Listado_Medicos : cargar_Medicos(global),
+        cargarEspecialidades : cargarEspecialidades,
+        cargarMedico_Por_Id : cargarMedico_Por_Id,
+        actualizar_Medico : actualizar_Medico,
+        cargarMedico_AutoCompletar : cargarMedico_AutoCompletar
+    };
+    
+    return medicos;
+});
+  
+

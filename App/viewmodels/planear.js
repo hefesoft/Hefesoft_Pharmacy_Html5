@@ -7,63 +7,25 @@ define([
  'logger',
  'durandal/plugins/router',
  'global/vars',
- 'Toastr'
+ 'Toastr',
+ 'Util/Kendo_Extencion',
+ 'Util/Dias'
  ],
- function (system, logger, router, global, toastr) {
+ function (system, logger, router, global, toastr, kendo_extencion, dias) {
      var toastr = toastr;
      var VisitaDataContext;
      var elementoSeleccionado;
      var Global_Q;
      var Global_Azure_Mobile_Services;
      var Global_Vars = global;
+     var Global_dias = dias;
 
      var dataSourceSheduler = new kendo.data.SchedulerDataSource({
          data: []
      });
 
-
-
-     var dataSourceExtensions = {
-         updateField: function (e) {
-             var ds = this;
-             $.each(ds._data, function (idx, record) {
-                 if (record[e.keyField] == e.keyValue) {
-                     var elemento = ds.at(idx);
-                     elemento.set(e.updateField, e.updateValue);
-                     //ds._data[idx][e.updateField] = e.updateValue;
-                     ds.sync();
-                     return false;
-                 }
-             });
-         },
-         getByField: function (e) {
-             var ds = this;
-
-             for (x in ds._data) {
-                 var item = ds._data[x];
-                 if (item[e.keyField] == e.keyValue) {
-                     var elemento = ds._data[x];
-                     return elemento;
-                 }
-             }
-         },
-         actualizar: function (e) {
-             var ds = this;
-
-             for (x in ds._data) {
-                 var item = ds._data[x];
-                 if (item[e.keyField] == e.keyValue) {
-                     var elemento = ds._data[x];
-                     elemento.set(e.updateField, e.updateValue);
-                     ds.sync();
-                     return true;
-                 }
-             }
-         }
-
-     };
-
-     $.extend(true, kendo.data.DataSource.prototype, dataSourceExtensions);
+     // Cargar extencion para actualizar datasource
+     $.extend(true, kendo.data.DataSource.prototype, kendo_extencion.dataSourceExtensions);
 
      var planear = function () {
          this.displayName = 'Planear';
@@ -116,14 +78,8 @@ define([
                  elementoSeleccionado = dataItem;
 
                  if (elementoSeleccionado.Tipo == 'Actividad Justificada') {
-
-                     var dia = moment().format('d');
-
-                     if (dia == 6 || dia == 7) {
-                         alert('Dia no habilitado para planear');
-                         toastr.warning('Dia no permitido para planear');
-                     }
-                     else {
+                     if(Global_dias.validarDia())
+                     {
                          var scheduler = $("#scheduler").data("kendoScheduler");
                          scheduler.addEvent({ title: dataItem.Nombres });
                      }
@@ -136,16 +92,10 @@ define([
                      }
 
                      else {
-                         var dia = moment().format('d');
-
-
-                         if (dia == 6 || dia == 7) {
-                             alert('Dia no habilitado para planear');
-                             toastr.warning('Dia no permitido para planear');
-                         }
-                         else {
+                         if(Global_dias.validarDia())
+                         {
                              var scheduler = $("#scheduler").data("kendoScheduler");
-                             scheduler.addEvent({ title: dataItem.Nombres + ' ' + dataItem.Apellidos });
+                             scheduler.addEvent({ title: dataItem.Nombres });
                          }
                      }
                  }

@@ -90,7 +90,7 @@ define(
     var deferred = Q.defer();
 
     var MobileServiceClient = WindowsAzure.MobileServiceClient;
-    var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+    var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
     var todoItemTable = client.getTable('TP_Ciclo');
 
     var query = todoItemTable.where({

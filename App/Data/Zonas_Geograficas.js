@@ -3,17 +3,11 @@ define(
 ]
 ,
 function () {
-    var zonas_geograficas = {       
-        cargarDepartamentos : cargarDepartamentos,
-        cargarCiudades : cargarCiudades
-    };
-    return zonas_geograficas;
-});
-    
-function cargarDepartamentos(global,Q,Azure_Mobile_Services){      
+   
+    function cargarDepartamentos(global,Q,Azure_Mobile_Services){      
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('tp_departamento');
 
          var query = todoItemTable.take(200).orderBy("Departamento").read()
@@ -34,7 +28,7 @@ function cargarDepartamentos(global,Q,Azure_Mobile_Services){
 function cargarCiudades(global,Q,Azure_Mobile_Services,codigo){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
-        var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+        var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('tp_ciudad');
 
          var query =  todoItemTable.take(200).orderBy("Ciudad").where({
@@ -53,3 +47,12 @@ function cargarCiudades(global,Q,Azure_Mobile_Services,codigo){
 
         return deferred.promise;
     };
+   
+    var zonas_geograficas = {       
+        cargarDepartamentos : cargarDepartamentos,
+        cargarCiudades : cargarCiudades
+    };
+   
+    return zonas_geograficas;
+});
+    
