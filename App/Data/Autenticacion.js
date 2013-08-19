@@ -2,8 +2,9 @@ define(
 [
 'global/vars',
 'Promesas/q.min',
-'durandal/plugins/router'
-], function (global,Q,router) {
+'durandal/plugins/router',
+'Data/Ciclos'
+], function (global,Q,router,ciclos) {
     var Autenticacion = {        
         consultarUsuario : consultarUsuario,
         obtenerUsuarios : obtenerUsuarios,
@@ -28,6 +29,9 @@ define(
     if (results.length > 0) {
 
         global.id_Usuario = results[0].id;
+        global.id_Usuario_antiguo = results[0].Id_Antiguo;
+
+        ciclos.cargarCicloActivo();
 
         // Aca poner logica de perfiles
         var routes = [

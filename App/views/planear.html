@@ -25,13 +25,22 @@
         <div class="medico">            
                 # if (Tipo == 'Medico'){ #  
                 <h3 class="label label-info"> #:Row# #:Nombres# #:Apellidos#</h3>
-                # } else if (Tipo == 'Farmacia'){ #
+                # } 
+                else if (Tipo == 'Farmacia'){ #
                 <h3 class="label label-warning"> #:Row# #:Nombres#</h3>
+                # }
+                else if (Tipo == 'Actividad Justificada'){ #
+                <h3 class="label label-notice"> #:Row# #:Nombres#</h3>
                 # } #
+             
+
+                # if (Tipo != 'Actividad Justificada'){ #  
                 <div class="direccion">
                     <p>#:Direccion#</p>
                     <span class="label">#:ContactosActual#/#:ContactosOriginal#</span>
-                </div>        
+                </div>
+                # } #
+                
 
         </div>
     </script>
@@ -47,7 +56,11 @@
     </script>
    
      <style>        
-         
+      
+    .label.notice {
+        background-color: #62cffc;
+    }
+            
     #Planear
      {
             overflow: auto;
@@ -87,6 +100,9 @@
            float: right;
            margin-top: -4em;
         }
+         
+       
+         
      </style>
 </section>    
 

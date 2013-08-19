@@ -2,8 +2,6 @@
 /// <reference path="../../Scripts/jquery-1.9.1.js" />
 /// <reference path="../../Scripts/jquery-1.9.1.intellisense.js" />
 
-
-
 define([
 'durandal/system',
  'logger',
@@ -17,6 +15,8 @@ define([
      var elementoSeleccionado;
      var Global_Q;
      var Global_Azure_Mobile_Services;
+     var Global_Vars = global;
+
      var dataSourceSheduler = new kendo.data.SchedulerDataSource({
          data: []
      });
@@ -79,7 +79,7 @@ define([
              dataContext = dataPlaneacion;
              VisitaDataContext = dataVisita;
 
-             dataPlaneacion.cargarPlaneacion_Por_Usuario('', Q, Azure_Mobile_Services, '3CC9A845-92FA-40DA-BCBE-038ECCF7C4D4', '08E8BACD-169D-4CB0-AD87-9923CE2CF9C2').then(function (result) {
+             dataPlaneacion.cargarPlaneacion_Por_Usuario('', Q, Azure_Mobile_Services, Global_Vars.id_Usuario_antiguo, Global_Vars.ciclo_Antiguo).then(function (result) {
                  if (result.length > 0) {
                      cargarGrilla(result)
                  }
@@ -115,14 +115,9 @@ define([
                  dataItem = dataSourceMedicos.view()[index];
                  elementoSeleccionado = dataItem;
 
-                 if (elementoSeleccionado.ContactosOriginal <= elementoSeleccionado.ContactosActual) {
-                     toastr.error('Numero de contactos', 'Numero de contactos superados');
-                     elementoSeleccionado = undefined;
-                 }
+                 if (elementoSeleccionado.Tipo == 'Actividad Justificada') {
 
-                 else {
                      var dia = moment().format('d');
-
 
                      if (dia == 6 || dia == 7) {
                          alert('Dia no habilitado para planear');
@@ -130,7 +125,28 @@ define([
                      }
                      else {
                          var scheduler = $("#scheduler").data("kendoScheduler");
-                         scheduler.addEvent({ title: dataItem.Nombres + ' ' + dataItem.Apellidos });
+                         scheduler.addEvent({ title: dataItem.Nombres });
+                     }
+                 }
+                 else {
+
+                     if (elementoSeleccionado.ContactosOriginal <= elementoSeleccionado.ContactosActual) {
+                         toastr.error('Numero de contactos', 'Numero de contactos superados');
+                         elementoSeleccionado = undefined;
+                     }
+
+                     else {
+                         var dia = moment().format('d');
+
+
+                         if (dia == 6 || dia == 7) {
+                             alert('Dia no habilitado para planear');
+                             toastr.warning('Dia no permitido para planear');
+                         }
+                         else {
+                             var scheduler = $("#scheduler").data("kendoScheduler");
+                             scheduler.addEvent({ title: dataItem.Nombres + ' ' + dataItem.Apellidos });
+                         }
                      }
                  }
              }
@@ -191,6 +207,10 @@ define([
                      Minuto_Entero: moment(e.model.start).format('mm'),
                      id_Usuario: 2 /* Para pruebas */
                  };
+
+                 if (elementoSeleccionado.Tipo == 'Actividad Justificada') {
+                     visita.Actividad_Justificada = true;
+                 }
 
                  VisitaDataContext.AgregarVisita('', Global_Q, Global_Azure_Mobile_Services, visita).then(function (result) {
                      dataSourceSheduler.actualizar({ keyField: 'title', keyValue: e.model.title, updateField: 'identificadorHefesoftPharmacy', updateValue: result.id });

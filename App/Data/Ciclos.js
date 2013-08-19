@@ -1,11 +1,16 @@
-define(['global/vars'], function (global) {
+define(
+[
+'global/vars',
+'Promesas/q.min',
+'durandal/plugins/router'
+], function (global,Q,router) 
+{
     var ciclos = {        
-        DataSource : cargar_TP_Ciclos(global)
+        DataSource : cargar_TP_Ciclos(global),
+        cargarCicloActivo : cargarCicloActivo
     };
-    return ciclos;
-});
-  
- function cargar_TP_Ciclos(global) {
+
+    function cargar_TP_Ciclos(global) {
      var remoteDataSource = new kendo.data.DataSource({
          transport: {
              read: {
@@ -78,8 +83,36 @@ define(['global/vars'], function (global) {
                  }
              }
          }
-     });
-
-        remoteDataSource.read();
+     });        
         return remoteDataSource;
     };  
+    function cargarCicloActivo() {    
+    var deferred = Q.defer();
+
+    var MobileServiceClient = WindowsAzure.MobileServiceClient;
+    var client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', 'kkSCbZkUqmJXuzhstBCOGgQVoWLLkr57');
+    var todoItemTable = client.getTable('TP_Ciclo');
+
+    var query = todoItemTable.where({
+        Activo: true
+    }).read().done(function (results) {
+    if (results.length > 0) {
+
+        global.ciclo = results[0].id;
+        global.ciclo_Antiguo = results[0].Id_antiguo;       
+    }
+    else {
+        deferred.resolve(results);
+    }
+    }, function (err) {
+        deferred.reject(new Error("Error " + err));
+    });
+
+    return deferred.promise;
+};    
+
+
+    return ciclos;
+});
+  
+ 
