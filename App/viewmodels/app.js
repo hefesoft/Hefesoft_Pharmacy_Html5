@@ -19,14 +19,11 @@ define(
 
         var init = function () {
           
-                window.Sammy = Sammy;
-                //>>excludeStart("build", true);
-                system.debug(true);
-                //>>excludeEnd("build");
+                window.Sammy = Sammy;           
+                system.debug(true);            
 
                 app.title = 'Hefesoft Pharmacy';
-
-                //Promises
+             
                 system.defer = function (action) {
                   var deferred = Q.defer();
                   action.call(deferred, deferred);
@@ -38,12 +35,8 @@ define(
                 };
                 //
 
-                app.start().then(function () {
-                    //Replace 'viewmodels' in the moduleId with 'views' to locate the view.
-                    //Look for partial views in a 'views' folder in the root.
-                    viewLocator.useConvention();
-
-                    //configure routing
+                app.start().then(function () {                    
+                    viewLocator.useConvention();                   
                     router.useConvention();            
 
                     var routes = [
@@ -59,11 +52,9 @@ define(
                         { url: 'planear', moduleId: 'viewmodels/planear', name: 'Planear', visible: false, settings: { area: 'Planear'} }
                     ];
 
-                    router.map(routes);          
-
+                    router.map(routes);
                     app.adaptToDevice();
-
-                    //Show the app by setting the root view model for our application with a transition.
+                    
                     app.setRoot('viewmodels/shell', 'entrance');
                 });
 
