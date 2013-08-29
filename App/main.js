@@ -20,12 +20,7 @@ require.config({
         },
         jQuery: {
             exports: "jQuery"
-        },        
-        Toastr : 
-        {
-            deps: ["jquery"],
-            exports: "Toastr"
-        },
+        }, 
         kendo: {
             deps: ["jquery"],
             exports: "kendo"
@@ -48,18 +43,25 @@ require.config({
     }
 });
 
-require(["jQuery", "viewmodels/app","kendo", "Toastr","Azure_mobile_services","bootstrap","Sammy"], 
-function($, application, kendo, Toastr, ko,Azure_mobile_services,bootstrap, Sammy) {
+require(["jQuery", "viewmodels/app","kendo",,"Azure_mobile_services","bootstrap","Sammy"], 
+function($, application, kendo, ko,Azure_mobile_services,bootstrap, Sammy) {
 
     $(function() {
         window.Sammy = Sammy;
         app = application
-        application.init();
+        //Removido migracion durandal 2
+        //application.init();
     });
 });
 
 requirejs.config({
     paths: {
-        'text': 'durandal/amd/text'         
+        'text': 'durandal/amd/text',
+        'durandal': '../durandal',
+        'plugins': '../durandal/plugins',
+        'transitions': '../durandal/transitions'      
     }
 });
+
+define('jquery', function() { return jQuery; });
+define('knockout', ko);

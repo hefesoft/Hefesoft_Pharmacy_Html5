@@ -2,7 +2,7 @@ define(
 [
 'global/vars',
 'Promesas/q.min',
-'durandal/plugins/router'
+'plugins/router'
 ], function (global,Q,router) 
 {
     var ciclos = {        

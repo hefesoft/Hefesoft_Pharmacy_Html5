@@ -1,24 +1,18 @@
-/// <reference path="../../Scripts/knockout-2.2.1.debug.js" />
-/// <reference path="../../Scripts/jquery-1.9.1.js" />
-/// <reference path="../../Scripts/jquery-1.9.1.intellisense.js" />
-/// <reference path="../Data/Autenticacion.js" />
-
 define([
-'durandal/system',
- 'logger',
- 'durandal/plugins/router',
- 'global/vars',
- 'Data/Medicos',
- 'Data/Autenticacion'
- ],
- function (system, logger, router, global, dataContext, autenticacion) {
+'plugins/router',
+'durandal/app',
+'global/vars',
+'Data/Medicos',
+'Data/Autenticacion'
+
+], function (router, app, global, dataContext, autenticacion) {
+    
      var login_usuario = function () {
          this.displayName = 'Digite su usuario y contraseña';
      };
 
-     login_usuario.prototype.viewAttached = function (view) {
-
-         var validator = $("#Contenedor").kendoValidator().data("kendoValidator"),
+    login_usuario.prototype.compositionComplete  = function (view) {
+                 var validator = $("#Contenedor").kendoValidator().data("kendoValidator"),
                         status = $(".status");
 
          var vm = kendo.observable({
@@ -51,10 +45,38 @@ define([
                  status.text("Hay datos incorrectos en el formulario.").removeClass("valid").addClass("invalid");
              }
          });
+    };
+
+    //Note: This module exports a function. That means that you, the developer, can create multiple instances.
+    //This pattern is also recognized by Durandal so that it can create instances on demand.
+    //If you wish to create a singleton, you should export an object instead of a function.
+    //See the "flickr" module for an example of object export.
+
+    return login_usuario;
+});
+
+
+/*
+define([
+'plugins/router',
+'durandal/app',
+'global/vars',
+'Data/Medicos',
+'Data/Autenticacion'
+ ],
+ function (router, app, global, dataContext, autenticacion) {
+     var login_usuario = function () {
+         this.displayName = 'Digite su usuario y contraseña';
+     };
+
+     login_usuario.prototype.viewAttached = function (view) {
+
+
      };
 
      return login_usuario;
  });
+ */
 
 
    

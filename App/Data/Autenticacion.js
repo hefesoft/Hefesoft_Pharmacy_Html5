@@ -2,7 +2,7 @@ define(
 [
 'global/vars',
 'Promesas/q.min',
-'durandal/plugins/router',
+'plugins/router',
 'Data/Ciclos'
 ], function (global,Q,router,ciclos) {
     var Autenticacion = {        

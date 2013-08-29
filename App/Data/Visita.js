@@ -2,7 +2,7 @@ define(
 [
 'global/vars',
 'Promesas/q.min',
-'durandal/plugins/router'
+'plugins/router'
 ], function (global, Q, router) {
    
     function AgregarVisita(Q, Azure_Mobile_Services, visita) {
