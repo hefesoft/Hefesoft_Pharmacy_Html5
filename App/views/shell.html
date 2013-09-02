@@ -3,7 +3,7 @@
         <div class="navbar-inner">
             <a class="brand" data-bind="attr: { href: router.navigationModel()[0].hash }">
                 <i class="icon-home"></i>
-                <span>Durandal</span>
+                <span>Hefesoft pharmacy</span>
             </a>
             <ul class="nav" data-bind="foreach: router.navigationModel">
                 <li data-bind="css: { active: isActive }">
@@ -18,6 +18,6 @@
             </form>
         </div>
     </div>
-    
-    <div class="container-fluid page-host" data-bind="router: { transition:'entrance', cacheViews:true }"></div>
+    <!-- cache view guarda el estado de la pagina cuando esta en true -->
+    <div class="container-fluid page-host" data-bind="router: { transition:'entrance', cacheViews:false }"></div>
 </div>

@@ -8,7 +8,7 @@ define(
 [
 'durandal/system',
  'logger',
- 'durandal/plugins/router', 
+ 'plugins/router', 
  'global/vars',
  'Data/Ciclos'
  ], 
@@ -23,7 +23,7 @@ define(
         //-------------------------------------
     };
 
-    ciclos.prototype.viewAttached = function (view) {
+    ciclos.prototype.compositionComplete = function (view) {
         cargarDatos(view)
     };
 

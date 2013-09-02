@@ -6,7 +6,7 @@ define([
  'jQuery',
  'durandal/system',
  'logger',
- 'durandal/plugins/router',
+ 'plugins/router',
  'global/vars',
  'Data/Medicos',
  'Promesas/q.min',
@@ -27,17 +27,19 @@ define([
      function activate(context) {
          codigoMedico = context.codigomedico;
 
-         dataContext.cargarMedico_Por_Id(global, Q, Azure_Mobile_Services, codigoMedico).then(function (result) {
-             if (result.length > 0) {
-                 uiCargarDatosMedicos(result[0]);
-             }
-             else {
-                 toastr.warning('Usuario no cargado');
-             }
-         }, function (error) { toastr.warning(error); });
+         require(['Promesas/q.min'], function (q) {
+             dataContext.cargarMedico_Por_Id(q,codigoMedico).then(function (result) {
+                 if (result.length > 0) {
+                     uiCargarDatosMedicos(result[0]);
+                 }
+                 else {
+                     toastr.warning('Usuario no cargado');
+                 }
+             }, function (error) { toastr.warning(error); });
+         });
      }
 
-     editar_medico.prototype.viewAttached = function (view) {
+     editar_medico.prototype.compositionComplete = function (view) {
 
          //$("#nav").css('display', 'none');
 

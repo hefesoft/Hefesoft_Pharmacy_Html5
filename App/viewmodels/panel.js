@@ -6,7 +6,7 @@
 define([
 'durandal/system',
  'logger',
- 'durandal/plugins/router',
+ 'plugins/router',
  'global/vars',
  'Data/Medicos',
  'Data/Farmacias',
@@ -24,7 +24,7 @@ define([
          this.displayName = 'Panel';        
      };
 
-     panel.prototype.viewAttached = function (view) {
+     panel.prototype.compositionComplete = function (view) {
 
          var vm = kendo.observable({
              datasource: dataContext.DataSource,

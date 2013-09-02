@@ -2,7 +2,7 @@ define([
  "jQuery",
  "durandal/system",
  "logger",
- "durandal/plugins/router",
+ "plugins/router",
  "Promesas/q.min",
  "MobileServices.Web-1.0.0.min",
  "Data/Zonas_Geograficas",
@@ -21,10 +21,9 @@ define([
 
      function activate(context) {
          codigoFarmacia = context.codigofarmacia;
-         require(['Data/Farmacias'], function (data) {
-
+         require(['Data/Farmacias',"Promesas/q.min"], function (data,Q) {
              dataContext = data;
-             dataContext.cargarCanales( Q, Azure_Mobile_Services).then(function (result) {
+             dataContext.cargarCanales(Q, Azure_Mobile_Services).then(function (result) {
                  if (result.length > 0) {
                      ui_Cargar_Canales(result);
                  }
@@ -32,7 +31,7 @@ define([
                      toastr.warning('Especialidades no cargadas');
                  }
              }, function (error) { toastr.warning(error); });
-             zonas_Geograficas.cargarDepartamentos( Q, Azure_Mobile_Services).then(function (result) {
+             zonas_Geograficas.cargarDepartamentos(Q, Azure_Mobile_Services).then(function (result) {
                  if (result.length > 0) {
                      ui_Cargar_Departamentos(result);
                  }
@@ -41,7 +40,7 @@ define([
                  }
              }, function (error) { toastr.warning(error); });
 
-             dataContext.cargarFarmacia_Por_Id( Q, Azure_Mobile_Services, codigoFarmacia).then(function (result) {
+             dataContext.cargarFarmacia_Por_Id(Q, Azure_Mobile_Services, codigoFarmacia).then(function (result) {
                  if (result.length > 0) {
                      uiCargarDatosFarmacia(result[0]);
                  }
@@ -53,7 +52,7 @@ define([
 
      }
 
-     editar_farmacia.prototype.viewAttached = function (view) {
+     editar_farmacia.prototype.compositionComplete = function (view) {
 
              $('#Actualizar').click(function () {
                  var farmacia = viewModel.Farmacia_Entidad;

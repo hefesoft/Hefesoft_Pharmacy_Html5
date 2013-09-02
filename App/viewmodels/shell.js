@@ -4,14 +4,14 @@
         search: function() {
             //It's really easy to show a message box.
             //You can add custom options too. Also, it returns a promise for the user's response.
-            app.showMessage('Search not yet implemented...');
+            app.showMessage('Busqueda no implementada...');
         },
         activate: function () {
             router.map([
-                 { route: '', title:'Welcome', moduleId: 'viewmodels/welcome', nav: true },
-                  { route: 'flickr', moduleId: 'viewmodels/login_usuario', nav: true }
+                 { route: '', title:'Login', moduleId: 'viewmodels/login_usuario', nav: true }                 
             ]).buildNavigationModel();
             
+
             return router.activate();
         }
     };

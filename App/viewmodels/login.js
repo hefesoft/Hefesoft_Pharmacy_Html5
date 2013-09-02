@@ -16,7 +16,7 @@ define(['durandal/system', 'logger', 'durandal/plugins/router','global/vars'],
         client = new WindowsAzure.MobileServiceClient('https://hefesoftpharmacy.azure-mobile.net/', global.Azure_key);      
     };
 
-    login.prototype.viewAttached = function (view) {
+    login.prototype.compositionComplete = function (view) {
 
     };
 

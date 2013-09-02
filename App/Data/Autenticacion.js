@@ -32,8 +32,9 @@ define(
         global.id_Usuario_antiguo = results[0].Id_Antiguo;
         
         // Va a el Data y Carga el ciclo actual
-        ciclos.cargarCicloActivo();
+        ciclos.cargarCicloActivo();      
 
+        /*
         // Aca poner logica de perfiles
         var routes = [
         { url: 'medicos', moduleId: 'viewmodels/medicos', name: 'Medicos', visible: true, settings: { area: 'Medicos'} },
@@ -47,7 +48,21 @@ define(
         { url: 'planear', moduleId: 'viewmodels/planear', name: 'Planear', visible: true, settings: { area: 'Planear'} }];
 
 
-        router.map(routes);
+        router.map(routes);        
+        */
+
+         router.map([
+            { route:'medicos',moduleId: 'viewmodels/medicos', nav: true },
+            { route:'farmacias', moduleId: 'viewmodels/farmacias', nav: true },
+            { route:'ciclos', moduleId: 'viewmodels/ciclos', nav: true },
+            { route:'panel', moduleId: 'viewmodels/panel', nav: true },
+            { route:'editar_medico', moduleId: 'viewmodels/editar_medico', nav: false},
+            { route:'editar_farmacia', moduleId: 'viewmodels/editar_farmacia', nav: false},
+            { route:'editar_usuario', moduleId: 'viewmodels/editar_usuario', nav: false},
+            { route:'usuario', moduleId: 'viewmodels/usuario', nav: true },
+            { route:'planear', moduleId: 'viewmodels/planear', nav: true }
+        ]).buildNavigationModel();
+
         deferred.resolve(results);
     }
     else {

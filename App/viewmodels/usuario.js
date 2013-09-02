@@ -5,7 +5,7 @@
 define([
 'durandal/system',
  'logger',
- 'durandal/plugins/router',
+ 'plugins/router',
  'global/vars'
  ],
  function (system, logger, router, global, dataContext) {
@@ -15,7 +15,7 @@ define([
          this.displayName = 'usuarios';
      };
 
-     usuarios.prototype.viewAttached = function (view) {
+     usuarios.prototype.compositionComplete = function (view) {
 
           require(['Data/Autenticacion', "Promesas/q.min", "MobileServices.Web-1.0.0.min"], function (datausuarios, Q, Azure_Mobile_Services) {
              dataContext = datausuarios;
@@ -65,9 +65,8 @@ define([
      function showDetails(e) {
              e.preventDefault();
              var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-             router.navigateTo('editar_usuario?codigousuario=' + dataItem.id);
+             router.navigate('editar_usuario?codigousuario=' + dataItem.id);
          }
-
 
      return usuarios;
  });

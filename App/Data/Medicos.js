@@ -129,8 +129,8 @@ function (global, Q, Azure_Mobile_Services, Kendo) {
 
         return deferred.promise;
     };
-    function cargarMedico_Por_Id(Q,Azure_Mobile_Services,id){
-        var deferred = Q.defer();
+    function cargarMedico_Por_Id(q,id){
+        var deferred = q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
         var todoItemTable = client.getTable('TP_Medico');

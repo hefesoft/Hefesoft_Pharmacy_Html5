@@ -5,7 +5,7 @@
 define([
 'durandal/system',
  'logger',
- 'durandal/plugins/router',
+ 'plugins/router',
  'global/vars'
  ],
  function (system, logger, router, global, dataContext) {
@@ -15,7 +15,7 @@ define([
          this.displayName = 'Farmacias';
      };
 
-     farmacias.prototype.viewAttached = function (view) {
+     farmacias.prototype.compositionComplete = function (view) {
 
           require(['Data/Farmacias', "Promesas/q.min", "MobileServices.Web-1.0.0.min"], function (dataFarmacias, Q, Azure_Mobile_Services) {
              dataContext = dataFarmacias;
@@ -68,7 +68,7 @@ define([
      function showDetails(e) {
              e.preventDefault();
              var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-             router.navigateTo('editar_farmacia?codigofarmacia=' + dataItem.id);
+             router.navigate('editar_farmacia?codigofarmacia=' + dataItem.id);
          }
 
 

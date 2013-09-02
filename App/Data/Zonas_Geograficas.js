@@ -1,10 +1,11 @@
 define(
 [
+  'global/vars'
 ]
 ,
-function () {
+function (global) {
    
-    function cargarDepartamentos(global,Q,Azure_Mobile_Services){      
+    function cargarDepartamentos(Q,Azure_Mobile_Services){      
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);
@@ -25,7 +26,7 @@ function () {
         return deferred.promise;
     };
 
-function cargarCiudades(global,Q,Azure_Mobile_Services,codigo){
+    function cargarCiudades(Q,Azure_Mobile_Services,codigo){
         var deferred = Q.defer();
         var MobileServiceClient = WindowsAzure.MobileServiceClient;
         var client = new WindowsAzure.MobileServiceClient(global.Azure_Url, global.Azure_key);

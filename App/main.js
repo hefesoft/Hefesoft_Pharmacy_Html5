@@ -8,12 +8,17 @@ require.config({
         Toastr : "../toastr.min",
         Moment : "../moment.min",
         Azure_mobile_services : "../MobileServices.Web-1.0.0.min",
+        page : "../page",
         bootstrap : "../bootstrap",
         Sammy : "../sammy-0.7.4"      
 	},
     shim: {
-        Azure_mobile_services: {            
+        Azure_mobile_services: {                        
             exports: "Azure_mobile_services"
+        },
+        page: {  
+            deps: ["Azure_mobile_services"],          
+            exports: "page"
         },
         jquery: {            
             exports: "jquery"
@@ -43,15 +48,17 @@ require.config({
     }
 });
 
-require(["jQuery", "viewmodels/app","kendo",,"Azure_mobile_services","bootstrap","Sammy"], 
-function($, application, kendo, ko,Azure_mobile_services,bootstrap, Sammy) {
-
-    $(function() {
+require(["jQuery", "kendo",,"Azure_mobile_services","bootstrap","Sammy"], 
+function($, kendo, ko,Azure_mobile_services,bootstrap, Sammy) {
+    require(["viewmodels/app"], function(application){
+      $(function() {
         window.Sammy = Sammy;
         app = application
         //Removido migracion durandal 2
         //application.init();
-    });
+        });  
+      }
+    );
 });
 
 requirejs.config({

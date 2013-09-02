@@ -6,7 +6,7 @@
 define([
 'durandal/system',
  'logger',
- 'durandal/plugins/router' 
+ 'plugins/router' 
  ],
  function (system, logger, router) {
 
@@ -14,7 +14,7 @@ define([
          this.displayName = 'Registrar';
      };
 
-     registrar.prototype.viewAttached = function (view) {         
+     registrar.prototype.compositionComplete = function (view) {         
         
          var app = new kendo.mobile.Application($("#mobileContainer"));
         

@@ -2,7 +2,7 @@ define([
  "jQuery",
  "durandal/system",
  "logger",
- "durandal/plugins/router",
+ "plugins/router",
  "Promesas/q.min",
  "MobileServices.Web-1.0.0.min",
  "Util/Util"
@@ -35,7 +35,7 @@ define([
 
      }
 
-     editar_Usuario.prototype.viewAttached = function (view) {
+     editar_Usuario.prototype.compositionComplete = function (view) {
 
              $('#Actualizar').click(function () {
                  var Usuario = viewModel.Usuario_Entidad;                 

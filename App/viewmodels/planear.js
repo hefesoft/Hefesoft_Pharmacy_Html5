@@ -5,7 +5,7 @@
 define([
 'durandal/system',
  'logger',
- 'durandal/plugins/router',
+ 'plugins/router',
  'global/vars',
  'Toastr',
  'Util/Kendo_Extencion',
@@ -31,7 +31,7 @@ define([
          this.displayName = 'Planear';
      };
 
-     planear.prototype.viewAttached = function (view) {
+     planear.prototype.compositionComplete = function (view) {
 
          require(["Data/Planear", "Promesas/q.min", "MobileServices.Web-1.0.0.min", "Data/Visita"],
          function (dataPlaneacion, Q, Azure_Mobile_Services, dataVisita) {

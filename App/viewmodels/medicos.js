@@ -5,7 +5,7 @@
 define([
 'durandal/system',
  'logger',
- 'durandal/plugins/router',
+ 'plugins/router',
  'global/vars'
  ],
  function (system, logger, router, global) {
@@ -15,7 +15,7 @@ define([
          this.displayName = 'Parametrizar Medicos';
      };
 
-     medicos.prototype.viewAttached = function (view) {
+     medicos.prototype.compositionComplete = function (view) {
 
          require(['Data/Medicos', "Promesas/q.min", "MobileServices.Web-1.0.0.min"], function (dataMedicos, Q, Azure_Mobile_Services) {
              dataContext = dataMedicos;
@@ -42,7 +42,7 @@ define([
      function showDetails(e) {
          e.preventDefault();
          var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-         router.navigateTo('editar_medico?codigomedico=' + dataItem.id);
+         router.navigate('editar_medico?codigomedico=' + dataItem.id);
      }
 
      function obtenerTipoDocumento(roleId) {
