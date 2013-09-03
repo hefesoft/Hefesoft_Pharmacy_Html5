@@ -53,9 +53,7 @@ function($, kendo, ko,Azure_mobile_services,bootstrap, Sammy) {
     require(["viewmodels/app"], function(application){
       $(function() {
         window.Sammy = Sammy;
-        app = application
-        //Removido migracion durandal 2
-        //application.init();
+        app = application       
         });  
       }
     );

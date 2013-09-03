@@ -10,7 +10,6 @@
             router.map([
                  { route: '', title:'Login', moduleId: 'viewmodels/login_usuario', nav: true }                 
             ]).buildNavigationModel();
-            
 
             return router.activate();
         }

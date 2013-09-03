@@ -32,24 +32,9 @@ define(
         global.id_Usuario_antiguo = results[0].Id_Antiguo;
         
         // Va a el Data y Carga el ciclo actual
-        ciclos.cargarCicloActivo();      
+        ciclos.cargarCicloActivo();
 
-        /*
-        // Aca poner logica de perfiles
-        var routes = [
-        { url: 'medicos', moduleId: 'viewmodels/medicos', name: 'Medicos', visible: true, settings: { area: 'Medicos'} },
-        { url: 'farmacias', moduleId: 'viewmodels/farmacias', name: 'Farmacias', visible: true, settings: { area: 'Farmacias'} },
-        { url: 'ciclos', moduleId: 'viewmodels/ciclos', name: 'Ciclos', visible: true, settings: { area: 'Ciclos'} },
-        { url: 'panel', moduleId: 'viewmodels/panel', name: 'Panel', visible: true, settings: { area: 'Panel'} },
-        { url: 'editar_medico', moduleId: 'viewmodels/editar_medico', name: 'Editar Medico', visible: false, settings: { area: 'Medicos'} },
-        { url: 'editar_farmacia', moduleId: 'viewmodels/editar_farmacia', name: 'Editar Farmacia', visible: false, settings: { area: 'Farmacia'} },
-        { url: 'editar_usuario', moduleId: 'viewmodels/editar_usuario', name: 'Editar Usuario', visible: false, settings: { area: 'Usuario'} },
-        { url: 'usuario', moduleId: 'viewmodels/usuario', name: 'Usuarios', visible: true, settings: { area: 'Usuario'} },
-        { url: 'planear', moduleId: 'viewmodels/planear', name: 'Planear', visible: true, settings: { area: 'Planear'} }];
-
-
-        router.map(routes);        
-        */
+        router.reset();
 
          router.map([
             { route:'medicos',moduleId: 'viewmodels/medicos', nav: true },

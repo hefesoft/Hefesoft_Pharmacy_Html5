@@ -1,8 +1,5 @@
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (system, app, viewLocator) {
-    //>>excludeStart("build", true);
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (system, app, viewLocator) {  
     system.debug(true);
-    //>>excludeEnd("build");
-
     app.title = 'Hefesoft Pharmacy';
 
     app.configurePlugins({
@@ -11,12 +8,10 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (s
         widget: true
     });
 
-    app.start().then(function() {
-        //Replace 'viewmodels' in the moduleId with 'views' to locate the view.
-        //Look for partial views in a 'views' folder in the root.
-        viewLocator.useConvention();
+   
 
-        //Show the app by setting the root view model for our application with a transition.
+    app.start().then(function() {        
+        viewLocator.useConvention();       
         app.setRoot('viewmodels/shell', 'entrance');
     });
 });

@@ -1,9 +1,9 @@
-﻿<div>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
+﻿<div>    
+    <div class="navbar navbar-fixed-top">                
+        <div class="navbar-inner">            
             <a class="brand" data-bind="attr: { href: router.navigationModel()[0].hash }">
                 <i class="icon-home"></i>
-                <span>Hefesoft pharmacy</span>
+                <span>Hefesoft pharmacy</span>                
             </a>
             <ul class="nav" data-bind="foreach: router.navigationModel">
                 <li data-bind="css: { active: isActive }">
@@ -19,5 +19,25 @@
         </div>
     </div>
     <!-- cache view guarda el estado de la pagina cuando esta en true -->
-    <div class="container-fluid page-host" data-bind="router: { transition:'entrance', cacheViews:false }"></div>
+    <div id="contenedor" class="container-fluid page-host" data-bind="router: { transition:'entrance', cacheViews:false }"></div>
+
+    <div id="cargando" style="background-color: #fff; height: 100%; width: 100%; position: absolute; display: block; overflow: hidden; display: none;">
+     <div class="container-fluid" style=" margin:25%">
+         <div class="row-fluid">
+            <div class="span5">                
+            </div>
+            <div class="span2">
+                <i class="icon-spinner icon-spin active icon-3x"></i>
+            </div>
+            <div class="span5">               
+            </div>
+        </div>
+    </div>
+  </div>
+    
+  
+
+
+</style>
+
 </div>

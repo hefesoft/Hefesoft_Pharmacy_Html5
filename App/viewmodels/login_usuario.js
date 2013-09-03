@@ -3,16 +3,17 @@ define([
 'durandal/app',
 'global/vars',
 'Data/Medicos',
-'Data/Autenticacion'
+'Data/Autenticacion',
+"Util/Busy"
 
-], function (router, app, global, dataContext, autenticacion) {
+], function (router, app, global, dataContext, autenticacion, busy) {
 
     var login_usuario = function () {
-        this.displayName = 'Digite su usuario y contraseña';        
+        this.displayName = 'Digite su usuario y contraseña';
     };
 
 
-    login_usuario.prototype.activate =  function () {
+    login_usuario.prototype.activate = function () {
 
     }
 
@@ -30,8 +31,10 @@ define([
         $("button").click(function () {
             if (validator.validate()) {
                 status.text("Datos correctos").removeClass("invalid").addClass("valid");
+                busy.mostrar();
                 autenticacion.consultarUsuario(vm.usuario, vm.password)
                     .then(function (result) {
+                        busy.ocultar();
                         if (result.length > 0) {
                             toastr.success('Usuario valido');
                         }
@@ -40,6 +43,7 @@ define([
                         }
                     }, function (error) {
                         toastr.warning(error);
+                        busy.ocultar();
                     });
 
             } else {
