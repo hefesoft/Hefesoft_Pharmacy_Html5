@@ -45,7 +45,8 @@ define(
             { route:'editar_farmacia', moduleId: 'viewmodels/editar_farmacia', nav: false},
             { route:'editar_usuario', moduleId: 'viewmodels/editar_usuario', nav: false},
             { route:'usuario', moduleId: 'viewmodels/usuario', nav: true },
-            { route:'planear', moduleId: 'viewmodels/planear', nav: true }
+            { route:'planear', moduleId: 'viewmodels/planear', nav: true },
+            { route:'novedades', moduleId: 'viewmodels/novedades', nav: true }
         ]).buildNavigationModel();
 
         deferred.resolve(results);

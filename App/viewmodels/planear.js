@@ -9,9 +9,10 @@ define([
  'global/vars',
  'Toastr',
  'Util/Kendo_Extencion',
- 'Util/Dias'
+ 'Util/Dias',
+ 'Util/Busy'
  ],
- function (system, logger, router, global, toastr, kendo_extencion, dias) {
+ function (system, logger, router, global, toastr, kendo_extencion, dias, busy) {
      var toastr = toastr;
      var VisitaDataContext;
      var elementoSeleccionado;
@@ -19,6 +20,8 @@ define([
      var Global_Azure_Mobile_Services;
      var Global_Vars = global;
      var Global_dias = dias;
+
+     busy.mostrar();
 
      var dataSourceSheduler = new kendo.data.SchedulerDataSource({
          data: []
@@ -44,6 +47,7 @@ define([
              dataPlaneacion.cargarPlaneacion_Por_Usuario( Q, Azure_Mobile_Services, Global_Vars.id_Usuario_antiguo, Global_Vars.ciclo_Antiguo).then(function (result) {
                  if (result.length > 0) {
                      cargarGrilla(result)
+                     busy.ocultar();
                  }
                  else {
                      toastr.warning('Sin resultados');
